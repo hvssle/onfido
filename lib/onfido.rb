@@ -1,5 +1,6 @@
 require 'onfido/version'
+require 'onfido/configuration'
 
 module Onfido
-  # Your code goes here...
+  extend Configuration
 end
