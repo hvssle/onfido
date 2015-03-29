@@ -1,17 +1,20 @@
 describe Onfido::RequestError do
   subject(:error) do
-    described_class.new(failed_response['message']).tap do |e|
-      e.type = failed_response['type']
-      e.fields = failed_response['fields']
+    described_class.new(failed_response['error']['message']).tap do |e|
+      e.type = failed_response['error']['type']
+      e.fields = failed_response['error']['fields']
     end
   end
 
   let(:failed_response) do
     {
-      'id' => '551722cc964860653c00c202',
-      'type' => 'authorization_error',
-      'message' => 'Authorization error: please re-check your credentials',
-      'fields' => {'name' => {'messages' => ['cannot be blank']} }
+      'error' =>
+      {
+        'id' => '551722cc964860653c00c202',
+        'type' => 'authorization_error',
+        'message' => 'Authorization error: please re-check your credentials',
+        'fields' => {'name' => {'messages' => ['cannot be blank']} }
+      }
     }
   end
 
