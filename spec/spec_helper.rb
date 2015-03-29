@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.disable_monkey_patching!
   config.warnings = false
+  config.expose_dsl_globally = true
 
   # Seed global randomization in this process using the `--seed` CLI option.
   # Setting this allows you to use `--seed` to deterministically reproduce
