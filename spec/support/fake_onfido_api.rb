@@ -2,7 +2,7 @@ require 'sinatra/base'
 
 class FakeOnfidoAPI < Sinatra::Base
   get '/v1/addresses/pick' do
-    json_response 200, 'address_picker.json'
+    json_response 200, 'addresses.json'
   end
 
   private
