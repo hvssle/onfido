@@ -6,7 +6,7 @@ require 'onfido/configuration'
 require 'onfido/request_error'
 require 'onfido/response_handler'
 require 'onfido/null_logger'
-
+require 'onfido/requestable'
 
 module Onfido
   extend Configuration
