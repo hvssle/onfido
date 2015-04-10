@@ -32,7 +32,11 @@ module Onfido
     # Have a look here https://gist.github.com/PericlesTheo/cb35139c57107ab3c84a
 
     def build_query(payload)
-      Rack::Utils.build_nested_query(payload)
+      if payload[:file]
+        payload
+      else
+        Rack::Utils.build_nested_query(payload)
+      end
     end
   end
 end
