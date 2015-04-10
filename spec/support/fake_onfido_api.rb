@@ -22,6 +22,18 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(201, 'document.json')
   end
 
+  post '/v1/applicants/:id/checks' do
+    json_response(201, 'check.json')
+  end
+
+  get '/v1/applicants/:id/checks/:id' do
+    json_response(201, 'check.json')
+  end
+
+  get '/v1/applicants/:id/checks' do
+    json_response(201, 'checks.json')
+  end
+
   private
 
   def json_response(response_code, file_name)
