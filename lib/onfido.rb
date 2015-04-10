@@ -7,6 +7,7 @@ require 'onfido/request_error'
 require 'onfido/response_handler'
 require 'onfido/null_logger'
 require 'onfido/requestable'
+require 'onfido/resource'
 require 'onfido/api'
 
 module Onfido
