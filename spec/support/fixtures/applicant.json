@@ -1,0 +1,44 @@
+{
+    "id":"61f659cb-c90b-4067-808a-6136b5c01351",
+    "created_at":"2015-04-10T13:16:01Z",
+    "title":"Mr",
+    "first_name":"Chandler",
+    "middle_name":"Muriel",
+    "last_name":"Bing",
+    "email":"chandler_bing_6@friends.com",
+    "gender":"Male",
+    "dob":"1968-04-08",
+    "telephone":"555555555",
+    "mobile":"77777777",
+    "country":"gbr",
+    "href":"/v1/applicants/61f659cb-c90b-4067-808a-6136b5c01351",
+    "id_numbers":[],
+    "addresses": [
+        {
+            "flat_number":"4",
+            "building_number":"100",
+            "building_name":"Awesome Building",
+            "street":"Main Street",
+            "sub_street":"A sub street",
+            "town":"London",
+            "state":"",
+            "postcode":"SW4 6EH",
+            "country":"GBR",
+            "start_date":"",
+            "end_date":""
+        },
+        {
+            "flat_number":"1",
+            "building_number":"10",
+            "building_name":"Great Building",
+            "street":"Old Street",
+            "sub_street":"Sub Street",
+            "town":"London",
+            "state":"",
+            "postcode":"SW1 4NG",
+            "country":"GBR",
+            "start_date":"",
+            "end_date":""
+        }
+    ]
+}
