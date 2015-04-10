@@ -10,5 +10,5 @@ end
 group :test do
   gem 'rspec', '~> 3.1.0'
   gem 'webmock', '~> 1.20.4'
-  gem 'vcr', '~> 2.9.3'
+  gem 'sinatra', '~> 1.4.6'
 end
