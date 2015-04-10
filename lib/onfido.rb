@@ -10,7 +10,9 @@ require 'onfido/null_logger'
 require 'onfido/requestable'
 require 'onfido/resource'
 require 'onfido/address'
+require 'onfido/applicant'
 require 'onfido/api'
+
 
 module Onfido
   extend Configuration

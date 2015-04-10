@@ -30,6 +30,7 @@ module Onfido
     # There seems to be a serialization issue with the HTTP client
     # which does not serialize the payload properly.
     # Have a look here https://gist.github.com/PericlesTheo/cb35139c57107ab3c84a
+
     def build_query(payload)
       Rack::Utils.build_nested_query(payload)
     end
