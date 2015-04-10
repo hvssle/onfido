@@ -1,4 +1,5 @@
 require 'json'
+require 'rack'
 require 'rest-client'
 
 require 'onfido/version'
