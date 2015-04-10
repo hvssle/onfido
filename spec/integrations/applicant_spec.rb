@@ -51,7 +51,7 @@ describe Onfido::Applicant do
 
     it 'creates an applicant' do
       response = api.applicant.create(params)
-      expect(response['id']).not_to be_empty
+      expect(response['id']).not_to be_nil
     end
   end
 

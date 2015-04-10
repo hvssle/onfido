@@ -20,7 +20,7 @@ describe Onfido::Document do
 
       it 'creates a new document' do
         response = document.create('foobar', params)
-        expect(response['id']).not_to be_empty
+        expect(response['id']).not_to be_nil
       end
     end
   end
