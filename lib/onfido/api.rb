@@ -1,6 +1,9 @@
+require 'onfido/address_picker'
+
 module Onfido
-  class Resource
+  class API
     include Requestable
+    include AddressPicker
 
     def url_for(path)
       Onfido.endpoint + path

@@ -1,5 +1,5 @@
-describe Onfido::Resource do
-  subject(:resource) { described_class.new }
+describe Onfido::API do
+  subject(:api) { described_class.new }
   let(:endpoint) { 'https://onfido.com/api/v1/' }
   let(:path) { 'addresses/pick' }
   let(:api_key) { 'some_key' }
@@ -11,7 +11,7 @@ describe Onfido::Resource do
 
   describe '#url_for' do
     it 'composes the full api url' do
-      expect(resource.url_for(path)).to eq(endpoint + path)
+      expect(api.url_for(path)).to eq(endpoint + path)
     end
   end
 
@@ -20,8 +20,8 @@ describe Onfido::Resource do
       context "for unsupported HTTP method: #{method}" do
         it 'raises an error' do
           expect {
-            resource.public_send(method)
-          }.to raise_error(NoMethodError, "undefined method '#{method}' for #{resource.class}")
+            api.public_send(method)
+          }.to raise_error(NoMethodError, "undefined method '#{method}' for #{api.class}")
         end
       end
     end
@@ -45,12 +45,12 @@ describe Onfido::Resource do
 
         before do
           expect(RestClient::Request).to receive(:execute)
-            .with(url: url, payload: payload, method: method, headers: resource.send(:headers))
+            .with(url: url, payload: payload, method: method, headers: api.send(:headers))
             .and_return(response)
         end
 
         it 'makes a request to an endpoint' do
-          expect(resource.public_send(method, {url: url, payload: payload})).to eq(response)
+          expect(api.public_send(method, {url: url, payload: payload})).to eq(response)
         end
       end
     end

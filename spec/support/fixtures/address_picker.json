@@ -1,0 +1,24 @@
+{
+  "addresses": [
+    {
+      "flat_number": "",
+      "building_number": "100",
+      "building_name": "",
+      "street": "Main Street",
+      "sub_street": "",
+      "town": "London",
+      "postcode": "SW4 6EH",
+      "country": "GBR"
+    },
+    {
+      "flat_number": "",
+      "building_number": "101",
+      "building_name": "",
+      "street": "Main Street",
+      "sub_street": "",
+      "town": "London",
+      "postcode": "SW4 6EH",
+      "country": "GBR"
+    }
+  ]
+}
