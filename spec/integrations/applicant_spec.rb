@@ -1,5 +1,5 @@
 describe Onfido::Applicant do
-  subject(:api) { Onfido::API.new }
+  subject(:applicant) { described_class.new }
   let(:params) do
     {
       'title' => 'Mr',
@@ -50,8 +50,8 @@ describe Onfido::Applicant do
     end
 
     it 'creates an applicant' do
-      response = api.applicant.create(params)
-      expect(response['id']).not_to be_empty
+      response = applicant.create(params)
+      expect(response['id']).not_to be_nil
     end
   end
 
@@ -59,14 +59,14 @@ describe Onfido::Applicant do
     let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
 
     it 'returns the applicant' do
-      response = api.applicant.find(applicant_id)
+      response = applicant.find(applicant_id)
       expect(response['id']).to eq(applicant_id)
     end
   end
 
   describe '#all' do
     it 'returns all the applicants' do
-      response = api.applicant.all
+      response = applicant.all
       expect(response['applicants'].size).to eq(2)
     end
   end

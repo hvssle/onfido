@@ -13,6 +13,8 @@ require 'onfido/resource'
 require 'onfido/address'
 require 'onfido/applicant'
 require 'onfido/document'
+require 'onfido/check'
+require 'onfido/report'
 require 'onfido/api'
 
 
