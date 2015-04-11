@@ -1,6 +1,6 @@
 describe Onfido::Resource do
   subject(:resource) { described_class.new }
-  let(:endpoint) { 'https://onfido.com/api/v1/' }
+  let(:endpoint) { 'https://api.onfido.com/v1/' }
   let(:path) { 'addresses/pick' }
   let(:api_key) { 'some_key' }
 

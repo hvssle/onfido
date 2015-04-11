@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'pry'
 
 class FakeOnfidoAPI < Sinatra::Base
   get '/v1/addresses/pick' do
