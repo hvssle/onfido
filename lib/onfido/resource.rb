@@ -24,14 +24,14 @@ module Onfido
       VALID_HTTP_METHODS.include?(method.to_sym) || super
     end
 
-    private
-
     def headers
       {
         'Authorization' => "Token token=#{Onfido.api_key}",
         'Accept' => "application/json"
       }
     end
+
+    private
 
     # There seems to be a serialization issue with the HTTP client
     # which does not serialize the payload properly.

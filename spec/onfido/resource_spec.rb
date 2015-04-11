@@ -45,7 +45,12 @@ describe Onfido::Resource do
 
         before do
           expect(RestClient::Request).to receive(:execute)
-            .with(url: url, payload: Rack::Utils.build_query(payload), method: method, headers: resource.send(:headers))
+            .with(
+              url: url,
+              payload: Rack::Utils.build_query(payload),
+              method: method,
+              headers: resource.headers
+            )
             .and_return(response)
         end
 
