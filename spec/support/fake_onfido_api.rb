@@ -27,12 +27,21 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v1/applicants/:id/checks/:id' do
-    json_response(201, 'check.json')
+    json_response(200, 'check.json')
   end
 
   get '/v1/applicants/:id/checks' do
-    json_response(201, 'checks.json')
+    json_response(200, 'checks.json')
   end
+
+  get '/v1/checks/:id/reports' do
+    json_response(200, 'reports.json')
+  end
+
+  get '/v1/checks/:id/reports/:id' do
+    json_response(200, 'report.json')
+  end
+
 
   private
 
