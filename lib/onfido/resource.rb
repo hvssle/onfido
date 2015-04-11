@@ -16,7 +16,7 @@ module Onfido
           method: method.to_sym
         )
       else
-        raise NoMethodError.new("undefined method '#{method}' for #{self.class}")
+        super
       end
     end
 
