@@ -31,6 +31,7 @@ module Onfido
       RequestError.new(parsed_response['error']['message']).tap do |error|
         error.type = parsed_response['error']["type"]
         error.fields = parsed_response['error']["fields"]
+        error.response_code = response.code if response.respond_to?(:code)
       end
     end
   end

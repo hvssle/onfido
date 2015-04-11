@@ -18,6 +18,6 @@ specified in the Onfido documentation e.g.
 
 module Onfido
   class RequestError < StandardError
-    attr_accessor :type, :fields
+    attr_accessor :type, :fields, :response_code
   end
 end
