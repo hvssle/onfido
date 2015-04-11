@@ -21,7 +21,7 @@ describe Onfido::Resource do
         it 'raises an error' do
           expect {
             resource.public_send(method)
-          }.to raise_error(NoMethodError, "undefined method '#{method}' for #{resource.class}")
+          }.to raise_error(NoMethodError)
         end
       end
     end

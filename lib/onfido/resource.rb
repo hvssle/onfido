@@ -1,5 +1,7 @@
 module Onfido
   class Resource
+    VALID_HTTP_METHODS = %i(get post)
+
     include Requestable
 
     def url_for(path)
@@ -7,15 +9,19 @@ module Onfido
     end
 
     def method_missing(method, *args)
-      if [:get, :post].include?(method.to_sym)
+      if VALID_HTTP_METHODS.include?(method.to_sym)
         make_request(
           url: args.first.fetch(:url),
           payload: build_query(args.first.fetch(:payload)),
           method: method.to_sym
         )
       else
-        raise NoMethodError.new("undefined method '#{method}' for #{self.class}")
+        super
       end
+    end
+
+    def respond_to_missing?(method, include_private = false)
+      VALID_HTTP_METHODS.include?(method.to_sym) || super
     end
 
     private
