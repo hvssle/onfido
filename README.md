@@ -2,6 +2,11 @@
 
 A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You should always refer to the documentation for valid API calls.
 
+[!['gitter room'][2]][1]
+
+  [1]: https://gitter.im/hvssle/onfido
+  [2]: https://badges.gitter.im/gitterHQ/developers.png
+
 ## Installation
 
 Add this line to your application's Gemfile:
