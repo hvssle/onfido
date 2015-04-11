@@ -46,7 +46,7 @@ Assuming you have a valid key, you can conveniently make API calls by using an i
 
 All resources share the same interface when making API calls. For creating a resource you can use `.create`, for finding one `.find` and for fetching all records for a resource `.all`.
 
-**Note:** *All param keys should be a symbol e.g. `{postcode: 'SE1 4NG'}`*
+**Note:** *All param keys should be a symbol e.g. `{type: 'express', reports: [{name: 'identity'}]}`*
 
 
 ### Applicant
@@ -118,7 +118,7 @@ To get all reports for a check
 To search for addresses by postcode
 
 ```ruby
-  api.address.all({postcode: 'SE1 4NG'})
+  api.address.all('SE1 4NG')
 ```
 
 ## Error Handling
