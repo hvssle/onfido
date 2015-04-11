@@ -127,7 +127,7 @@ By default, Onfido will attempt to raise errors returned by the API automaticall
 
 If you set the `throws_exceptions` to false, it will simply return the response body. This allows you to handle errors manually.
 
-If you rescue Onfido::RequestError, you are provided with the error message itself as well as the type of error and fields that have errored. Here's how you might do that:
+If you rescue Onfido::RequestError, you are provided with the error message itself as well as the type of error, response code and fields that have errored. Here's how you might do that:
 
 ```ruby
   def create_applicant
@@ -135,6 +135,7 @@ If you rescue Onfido::RequestError, you are provided with the error message itse
   rescue Onfido::RequestError => e
     e.type # returns 'validation_error'
     e.fields # returns {"email": {"messages": ["invalid format"]}
+    e.response_code # returns '401'
   end
 ```
 
