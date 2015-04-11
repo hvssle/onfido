@@ -139,9 +139,15 @@ If you rescue Onfido::RequestError, you are provided with the error message itse
   end
 ```
 
+### Roadmap
+
+- Improve test coverage with more scenarios
+- Add custom errors based on the response code.
+- Improve documentation
+
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/onfido/fork )
+1. Fork it ( https://github.com/hvssle/onfido/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
