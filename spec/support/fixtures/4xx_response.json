@@ -1,0 +1,14 @@
+{
+  "error": {
+    "id": "544f95539648607d03001542",
+    "type": "validation_error",
+    "message": "Something went wrong",
+    "fields": {
+      "email": {
+        "messages": [
+          "invalid format"
+        ]
+      }
+    }
+  }
+}
