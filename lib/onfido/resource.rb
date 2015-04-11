@@ -20,6 +20,10 @@ module Onfido
       end
     end
 
+    def respond_to_missing?(method, include_private = false)
+      VALID_HTTP_METHODS.include?(method.to_sym) || super
+    end
+
     private
 
     def headers
