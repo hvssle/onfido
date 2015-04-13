@@ -2,6 +2,7 @@
 
 A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You should always refer to the documentation for valid API calls.
 
+[![Build Status](https://snap-ci.com/hvssle/onfido/branch/master/build_image)](https://snap-ci.com/hvssle/onfido/branch/master)
 [![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido) [!['gitter room'][2]][1]
 
   [1]: https://gitter.im/hvssle/onfido
