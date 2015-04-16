@@ -16,6 +16,7 @@ require 'onfido/document'
 require 'onfido/check'
 require 'onfido/report'
 require 'onfido/api'
+require 'onfido/dinosaur'
 
 
 module Onfido
