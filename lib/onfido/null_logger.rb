@@ -1,6 +1,6 @@
 module Onfido
   class NullLogger
-    def <<
+    def <<(*args)
     end
   end
 end
