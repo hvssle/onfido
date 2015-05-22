@@ -31,7 +31,8 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v1/applicants/:id/checks' do
-    json_response(200, 'checks.json')
+    response = json_response(200, 'checks.json')
+    {checks: JSON.parse(response)['checks'][pagination_range]}.to_json
   end
 
   get '/v1/checks/:id/reports' do

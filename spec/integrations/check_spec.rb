@@ -28,9 +28,11 @@ describe Onfido::Check do
   describe '#all' do
     let(:check_id) { '8546921-123123-123123' }
 
-    it 'returns all existing checks for the applicant' do
-      response = check.all(applicant_id)
-      expect(response['checks'].size).to eq(1)
+    context 'with the default page and per page params' do
+      it 'returns all existing checks for the applicant' do
+        response = check.all(applicant_id)
+        expect(response['checks'].size).to eq(1)
+      end
     end
   end
 end
