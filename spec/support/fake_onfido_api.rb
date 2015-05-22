@@ -14,7 +14,8 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v1/applicants' do
-    json_response(200, 'applicants.json')
+    response = json_response(200, 'applicants.json')
+    {applicants: JSON.parse(response)['applicants'][pagination_range]}.to_json
   end
 
   post '/v1/applicants/:id/documents' do
@@ -51,5 +52,11 @@ class FakeOnfidoAPI < Sinatra::Base
     content_type :json
     status response_code
     File.open(File.dirname(__FILE__) + '/fixtures/' + file_name, 'rb').read
+  end
+
+  def pagination_range
+    start = (params.fetch('page').to_i - 1) * 20
+    limit = start + params.fetch('per_page').to_i - 1
+    start..limit
   end
 end
