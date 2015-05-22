@@ -65,9 +65,18 @@ describe Onfido::Applicant do
   end
 
   describe '#all' do
-    it 'returns all the applicants' do
-      response = applicant.all
-      expect(response['applicants'].size).to eq(2)
+    context 'with the default page and per page params' do
+      it 'returns all the applicants' do
+        response = applicant.all
+        expect(response['applicants'].size).to eq(2)
+      end
+    end
+
+    context 'with specific range of results for a page' do
+      it 'returns the specified applicants' do
+        response = applicant.all(page: 1, per_page: 1)
+        expect(response['applicants'].size).to eq(1)
+      end
     end
   end
 end
