@@ -122,6 +122,24 @@ To search for addresses by postcode
   api.address.all('SE1 4NG')
 ```
 
+### Pagination
+
+Currently, you can paginate over the *applicant* and *check* resources. However, since you can only create 1 check per applicant therefore paginating on the check resource might prove impractical.
+
+By default, both endpoints are fetching records the first 20 records. That is the maximum amount of records you can request per page.
+
+To paginate over *applicants*:
+```ruby
+api = Onfido::API.new
+api.applicant.all(page: 2, per_page: 10)
+```
+
+To paginate over *checks*:
+```
+api = Onfido::API.new
+api.check.all('applicant_id', page: 2, per_page: 10)
+```
+
 ## Error Handling
 
 By default, Onfido will attempt to raise errors returned by the API automatically.
