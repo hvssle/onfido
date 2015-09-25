@@ -3,7 +3,10 @@
 A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You should always refer to the documentation for valid API calls.
 
 [![Build Status](https://snap-ci.com/hvssle/onfido/branch/master/build_image)](https://snap-ci.com/hvssle/onfido/branch/master)
-[![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido) [!['gitter room'][2]][1]
+[![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido) 
+[![Build Status](https://travis-ci.org/hvssle/onfido.svg?branch=master)](https://travis-ci.org/hvssle/onfido)
+[!['gitter room'][2]][1]
+
 
   [1]: https://gitter.im/hvssle/onfido
   [2]: https://badges.gitter.im/gitterHQ/developers.png
