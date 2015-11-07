@@ -3,7 +3,7 @@
 A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You should always refer to the documentation for valid API calls.
 
 [![Build Status](https://snap-ci.com/hvssle/onfido/branch/master/build_image)](https://snap-ci.com/hvssle/onfido/branch/master)
-[![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido) 
+[![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido)
 [![Build Status](https://travis-ci.org/hvssle/onfido.svg?branch=master)](https://travis-ci.org/hvssle/onfido)
 [!['gitter room'][2]][1]
 
@@ -30,13 +30,15 @@ Or install it yourself as:
 
 ## Usage
 
-There are 3 configuration options for Onfido, including  your `api_key`, throwing exceptions for failed responses and logging the requests. By default, `throws_exceptions` is set to `true`. If set to `false`, the response body will be returned instead.
+There are 5 configuration options for Onfido, including your `api_key`, throwing exceptions for failed responses and logging the requests. By default, `throws_exceptions` is set to `true`. If set to `false` and Onfido responds with a valid JSON body the response body will be returned instead.
 
 ```ruby
   Onfido.configure do |config|
     config.api_key = 'MY_API_KEY'
     config.logger = Logger.new(STDOUT)
     config.throws_exceptions = false
+    config.open_timeout = 30
+    config.read_timeout = 80
   end
 ```
 
@@ -149,7 +151,7 @@ By default, Onfido will attempt to raise errors returned by the API automaticall
 
 If you set the `throws_exceptions` to false, it will simply return the response body. This allows you to handle errors manually.
 
-If you rescue Onfido::RequestError, you are provided with the error message itself as well as the type of error, response code and fields that have errored. Here's how you might do that:
+If you rescue `Onfido::RequestError`, you are provided with the error message itself as well as the type of error, response code and fields that have errored. Here's how you might do that:
 
 ```ruby
   def create_applicant
@@ -160,6 +162,8 @@ If you rescue Onfido::RequestError, you are provided with the error message itse
     e.response_code # returns '401'
   end
 ```
+
+You can also rescue `Onfido::ConnectionError`, which is raised whenever something goes wrong with the connection to Onfido - you may wish to automatically retry these requests.
 
 ### Roadmap
 

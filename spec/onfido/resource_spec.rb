@@ -25,7 +25,9 @@ describe Onfido::Resource do
         end
       end
     end
+  end
 
+  describe "valid http methods" do
     %i(get post).each do |method|
       context "for supported HTTP method: #{method}" do
         let(:url) { endpoint + path }
@@ -49,13 +51,18 @@ describe Onfido::Resource do
               url: url,
               payload: Rack::Utils.build_query(payload),
               method: method,
-              headers: resource.headers
-            )
-            .and_return(response)
+              headers: resource.send(:headers),
+              open_timeout: 30,
+              timeout: 80
+            ).and_call_original
+
+          WebMock.stub_request(method, url).
+            to_return(body: response.to_json, status: 200)
         end
 
         it 'makes a request to an endpoint' do
-          expect(resource.public_send(method, {url: url, payload: payload})).to eq(response)
+          expect(resource.public_send(method, {url: url, payload: payload})).
+            to eq(response)
         end
       end
     end
