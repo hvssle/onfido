@@ -1,6 +1,6 @@
 module Onfido
   module Configuration
-    attr_accessor :api_key, :throws_exceptions
+    attr_accessor :api_key, :throws_exceptions, :open_timeout, :read_timeout
 
     def self.extended(base)
       base.reset
@@ -13,6 +13,8 @@ module Onfido
     def reset
       self.api_key = nil
       self.throws_exceptions = true
+      self.open_timeout = 30
+      self.read_timeout = 80
       RestClient.log = nil
     end
 

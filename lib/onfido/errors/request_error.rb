@@ -19,5 +19,13 @@ specified in the Onfido documentation e.g.
 module Onfido
   class RequestError < StandardError
     attr_accessor :type, :fields, :response_code
+
+    def initialize(message=nil, type: nil, fields: nil, response_code: nil)
+      @type = type
+      @fields = fields
+      @response_code = response_code
+
+      super(message)
+    end
   end
 end

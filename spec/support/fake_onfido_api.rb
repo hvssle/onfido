@@ -47,6 +47,16 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(422, '4xx_response.json')
   end
 
+  get '/v1/unexpected_error_format' do
+    json_response(400, 'unexpected_error_format.json')
+  end
+
+  get '/v1/unparseable_response' do
+    content_type :json
+    status 504
+    ''
+  end
+
   private
 
   def json_response(response_code, file_name)
