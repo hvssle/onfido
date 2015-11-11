@@ -50,7 +50,7 @@ Assuming you have a valid key, you can conveniently make API calls by using an i
 
 All resources share the same interface when making API calls. For creating a resource you can use `.create`, for finding one `.find` and for fetching all records for a resource `.all`.
 
-**Note:** *All param keys should be a symbol e.g. `{type: 'express', reports: [{name: 'identity'}]}`*
+**Note:** *All param keys should be a symbol e.g. `{ type: 'express', reports: [{ name: 'identity' }] }`*
 
 
 ### Applicant
@@ -78,7 +78,7 @@ To get all applicants
 To upload a document for an applicant, you can simply use
 
 ```ruby
-  api.document.create('applicant_id', {file: 'http://example.com', type: 'passport')
+  api.document.create('applicant_id', file: 'http://example.com', type: 'passport')
 ```
 
 The file can both be a `File` object or a link to an image.
@@ -88,7 +88,7 @@ The file can both be a `File` object or a link to an image.
 To create a check for an applicant, you can simply use
 
 ```ruby
-  api.check.create('applicant_id', {type: 'express', reports: [{name: 'identity'}]})
+  api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
 ```
 
 To find an existing check for an applicant
@@ -156,7 +156,7 @@ If you rescue `Onfido::RequestError`, you are provided with the error message it
     api.applicant.create(params)
   rescue Onfido::RequestError => e
     e.type # returns 'validation_error'
-    e.fields # returns {"email": {"messages": ["invalid format"]}
+    e.fields # returns { "email": { "messages": ["invalid format"] } }
     e.response_code # returns '401'
   end
 ```
