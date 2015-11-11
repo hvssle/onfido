@@ -6,10 +6,10 @@ require 'onfido/version'
 Gem::Specification.new do |spec|
   spec.name          = 'onfido'
   spec.version       = Onfido::VERSION
-  spec.authors       = ['Pericles Theodorou']
-  spec.email         = ['periclestheo@gmail.com']
-  spec.summary       = %q{A wrapper for Onfido API 1.0}
-  spec.description   = %q{A wrapper for Onfido API 1.0}
+  spec.authors       = ['Pericles Theodorou', 'Grey Baker']
+  spec.email         = ['periclestheo@gmail.com', 'grey@gocardless.com']
+  spec.summary       = %q{A wrapper for Onfido API}
+  spec.description   = %q{A wrapper for Onfido API}
   spec.homepage      = 'http://github.com/hvssle/onfido'
   spec.license       = 'MIT'
 
