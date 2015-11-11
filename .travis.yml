@@ -13,4 +13,5 @@ rvm:
   - rbx-2
 
 script:
+  - bundle exec rubocop
   - bundle exec rspec spec

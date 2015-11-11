@@ -6,7 +6,9 @@ describe Onfido do
       onfido.reset
     end
 
-    {api_key: nil, endpoint: 'https://api.onfido.com/v1/', throws_exceptions: true}.each do |config_key, value|
+    { api_key: nil,
+      endpoint: 'https://api.onfido.com/v1/',
+      throws_exceptions: true }.each do |config_key, value|
       describe ".#{config_key}" do
         it 'returns the default value' do
           expect(onfido.public_send(config_key)).to eq(value)
@@ -14,7 +16,8 @@ describe Onfido do
       end
     end
 
-    {api_key: 'some_key', throws_exceptions: false}.each do |config_key, new_value|
+    { api_key: 'some_key',
+      throws_exceptions: false }.each do |config_key, new_value|
       describe ".#{config_key}=" do
         it 'changes the configuration to the new value' do
           onfido.public_send("#{config_key}=", new_value)
@@ -44,9 +47,10 @@ describe Onfido do
           let(:non_logger) { double('NotLogger') }
 
           it 'raises an error' do
-            expect {
-              onfido.logger = non_logger
-            }.to raise_error("#{non_logger.class} doesn't seem to behave like a logger!")
+            expect { onfido.logger = non_logger }.
+              to raise_error(
+                "#{non_logger.class} doesn't seem to behave like a logger!"
+              )
           end
         end
       end

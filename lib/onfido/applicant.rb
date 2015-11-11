@@ -12,7 +12,10 @@ module Onfido
     end
 
     def all(page: 1, per_page: 20)
-      get(url: url_for("applicants?page=#{page}&per_page=#{per_page}"), payload: {})
+      get(
+        url: url_for("applicants?page=#{page}&per_page=#{per_page}"),
+        payload: {}
+      )
     end
   end
 end

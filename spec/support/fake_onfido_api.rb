@@ -15,7 +15,7 @@ class FakeOnfidoAPI < Sinatra::Base
 
   get '/v1/applicants' do
     response = json_response(200, 'applicants.json')
-    {applicants: JSON.parse(response)['applicants'][pagination_range]}.to_json
+    { applicants: JSON.parse(response)['applicants'][pagination_range] }.to_json
   end
 
   post '/v1/applicants/:id/documents' do
@@ -32,7 +32,7 @@ class FakeOnfidoAPI < Sinatra::Base
 
   get '/v1/applicants/:id/checks' do
     response = json_response(200, 'checks.json')
-    {checks: JSON.parse(response)['checks'][pagination_range]}.to_json
+    { checks: JSON.parse(response)['checks'][pagination_range] }.to_json
   end
 
   get '/v1/checks/:id/reports' do

@@ -16,7 +16,6 @@ require 'onfido/check'
 require 'onfido/report'
 require 'onfido/api'
 
-
 module Onfido
   extend Configuration
 end

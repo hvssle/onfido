@@ -111,15 +111,15 @@ module Onfido
           "request completed. #{connection_message}"
 
         when RestClient::SSLCertificateNotVerified
-            "Could not verify Onfido's SSL certificate. Please make sure " \
-            "that your network is not intercepting certificates. " \
-            "(Try going to #{Onfido.endpoint} in your browser.) " \
-            "If this problem persists, let us know at info@onfido.com."
+          "Could not verify Onfido's SSL certificate. Please make sure " \
+          "that your network is not intercepting certificates. " \
+          "(Try going to #{Onfido.endpoint} in your browser.) " \
+          "If this problem persists, let us know at info@onfido.com."
 
         when SocketError
-            "Unexpected error when trying to connect to Onfido. " \
-            "You may be seeing this message because your DNS is not working. " \
-            "To check, try running 'host onfido.com' from the command line."
+          "Unexpected error when trying to connect to Onfido. " \
+          "You may be seeing this message because your DNS is not working. " \
+          "To check, try running 'host onfido.com' from the command line."
 
         else
           "Unexpected error communicating with Onfido. " \

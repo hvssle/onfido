@@ -13,24 +13,24 @@ describe Onfido::Applicant do
       'email' => 'chandler_bing_6@friends.com',
       'addresses' => [
         {
-         'flat_number' => '4',
-         'building_number' => '100',
-         'building_name' => 'Awesome Building',
-         'street' => 'Main Street',
-         'sub_street' => 'A sub street',
-         'town' => 'London',
-         'postcode' => 'SW4 6EH',
-         'country' => 'GBR'
+          'flat_number' => '4',
+          'building_number' => '100',
+          'building_name' => 'Awesome Building',
+          'street' => 'Main Street',
+          'sub_street' => 'A sub street',
+          'town' => 'London',
+          'postcode' => 'SW4 6EH',
+          'country' => 'GBR'
         },
         {
-         'flat_number' => '1',
-         'building_number' => '10',
-         'building_name' => 'Great Building',
-         'street' => 'Old Street',
-         'sub_street' => 'Sub Street',
-         'town' => 'London',
-         'postcode' => 'SW1 4NG',
-         'country' => 'GBR'
+          'flat_number' => '1',
+          'building_number' => '10',
+          'building_name' => 'Great Building',
+          'street' => 'Old Street',
+          'sub_street' => 'Sub Street',
+          'town' => 'London',
+          'postcode' => 'SW1 4NG',
+          'country' => 'GBR'
         }
       ]
     }
@@ -42,9 +42,10 @@ describe Onfido::Applicant do
     # is only for semantic reasons
 
     it 'serializes the payload correctly' do
-      WebMock.after_request do |request_signature, response|
+      WebMock.after_request do |request_signature, _response|
         if request_signature.uri.path == 'v1/applicants'
-          expect(Rack::Utils.parse_nested_query(request_signature.body)).to eq(params)
+          expect(Rack::Utils.parse_nested_query(request_signature.body)).
+            to eq(params)
         end
       end
     end

@@ -6,7 +6,7 @@ describe Onfido::Check do
     let(:params) do
       {
         type: 'express',
-        reports: [{name: 'identity'}]
+        reports: [{ name: 'identity' }]
       }
     end
 

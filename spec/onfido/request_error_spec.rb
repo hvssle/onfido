@@ -14,14 +14,15 @@ describe Onfido::RequestError do
         'id' => '551722cc964860653c00c202',
         'type' => 'authorization_error',
         'message' => 'Authorization error: please re-check your credentials',
-        'fields' => {'name' => {'messages' => ['cannot be blank']} }
+        'fields' => { 'name' => { 'messages' => ['cannot be blank'] } }
       }
     }
   end
 
   context 'when there is a request error' do
     it 'returns the right message' do
-      expect { raise error }.to raise_error('Authorization error: please re-check your credentials')
+      expect { raise error }.
+        to raise_error('Authorization error: please re-check your credentials')
     end
 
     it 'has the right error type' do
@@ -29,7 +30,8 @@ describe Onfido::RequestError do
     end
 
     it 'has the right affected fields' do
-      expect(error.fields).to eq({'name' => {'messages' => ['cannot be blank']} })
+      expect(error.fields).
+        to eq('name' => { 'messages' => ['cannot be blank'] })
     end
 
     it 'has the right response code' do

@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-Dir[File.dirname(__FILE__).concat("/support/**/*.rb")].each {|f| require f}
+Dir[File.dirname(__FILE__).concat("/support/**/*.rb")].each { |f| require f }
 
 require 'onfido'
 require 'webmock/rspec'

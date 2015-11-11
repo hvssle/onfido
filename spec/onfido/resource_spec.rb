@@ -19,9 +19,9 @@ describe Onfido::Resource do
     %i(put delete patch).each do |method|
       context "for unsupported HTTP method: #{method}" do
         it 'raises an error' do
-          expect {
+          expect do
             resource.public_send(method)
-          }.to raise_error(NoMethodError)
+          end.to raise_error(NoMethodError)
         end
       end
     end
@@ -31,7 +31,7 @@ describe Onfido::Resource do
     %i(get post).each do |method|
       context "for supported HTTP method: #{method}" do
         let(:url) { endpoint + path }
-        let(:payload) { {postcode: 'SE1 4NG'} }
+        let(:payload) { { postcode: 'SE1 4NG' } }
         let(:response) do
           {
             'addresses' => [
@@ -46,8 +46,8 @@ describe Onfido::Resource do
         end
 
         before do
-          expect(RestClient::Request).to receive(:execute)
-            .with(
+          expect(RestClient::Request).to receive(:execute).
+            with(
               url: url,
               payload: Rack::Utils.build_query(payload),
               method: method,
@@ -61,7 +61,7 @@ describe Onfido::Resource do
         end
 
         it 'makes a request to an endpoint' do
-          expect(resource.public_send(method, {url: url, payload: payload})).
+          expect(resource.public_send(method, url: url, payload: payload)).
             to eq(response)
         end
       end

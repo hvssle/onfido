@@ -10,18 +10,19 @@ describe Onfido::Document do
     end
 
     let(:file) { Tempfile.new(['passport', '.jpg']) }
+    before { allow(document).to receive(:open).and_return(:file) }
     let(:params) do
       {
         type: 'passport',
         side: 'back',
         file: file
       }
-      let(:applicant_id) { '1030303-123123-123123' }
+    end
+    let(:applicant_id) { '1030303-123123-123123' }
 
-      it 'creates a new document' do
-        response = document.create('foobar', params)
-        expect(response['id']).not_to be_nil
-      end
+    it 'creates a new document' do
+      response = document.create('foobar', params)
+      expect(response['id']).not_to be_nil
     end
   end
 end

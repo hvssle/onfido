@@ -3,7 +3,7 @@ describe Onfido::Report do
   let(:check_id) { '8546921-123123-123123' }
 
   describe '#find' do
-    let(:report_id) {'6951786-123123-422221' }
+    let(:report_id) { '6951786-123123-422221' }
 
     it 'returns a report for an existing check' do
       response = report.find(check_id, report_id)

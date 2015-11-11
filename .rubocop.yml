@@ -1,0 +1,43 @@
+# For all options see https://github.com/bbatsov/rubocop/tree/master/config
+
+AllCops:
+  Include:
+    - Rakefile
+    - lib/tasks/*.rake
+  Exclude:
+    - vendor/**/*
+    - .*/**
+    - spec/fixtures/**/*
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 25
+
+Metrics/AbcSize:
+  Max: 25
+
+# Don't require utf-8 encoding comment
+Style/Encoding:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 80
+
+Metrics/ClassLength:
+  Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+# Allow class and message or instance raises
+Style/RaiseArgs:
+  Enabled: false
