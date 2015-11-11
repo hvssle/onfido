@@ -4,9 +4,7 @@ describe Onfido::Resource do
   let(:api_key) { 'some_key' }
   let(:payload) { { postcode: 'SE1 4NG' } }
 
-  before do
-    allow(Onfido).to receive(:api_key).and_return(api_key)
-  end
+  before { allow(Onfido).to receive(:api_key).and_return(api_key) }
 
   context '4xx response' do
     let(:path) { '4xx_response' }

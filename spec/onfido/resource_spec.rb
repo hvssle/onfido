@@ -4,10 +4,8 @@ describe Onfido::Resource do
   let(:path) { 'addresses/pick' }
   let(:api_key) { 'some_key' }
 
-  before do
-    allow(Onfido).to receive(:endpoint).and_return(endpoint)
-    allow(Onfido).to receive(:api_key).and_return(api_key)
-  end
+  before { allow(Onfido).to receive(:endpoint).and_return(endpoint) }
+  before { allow(Onfido).to receive(:api_key).and_return(api_key) }
 
   describe '#url_for' do
     it 'composes the full api url' do
