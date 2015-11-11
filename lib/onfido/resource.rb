@@ -77,14 +77,11 @@ module Onfido
         general_api_error(response.code, response.body)
       end
 
-      if Onfido.throws_exceptions
-        raise RequestError.new(
-          parsed_response["error"]['message'],
-          response_code: response.code,
-          response_body: response.body)
-      else
-        parsed_response
-      end
+      raise RequestError.new(
+        parsed_response["error"]['message'],
+        response_code: response.code,
+        response_body: response.body
+      )
     end
 
     def general_api_error(response_code, response_body)

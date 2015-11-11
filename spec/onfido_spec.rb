@@ -2,37 +2,33 @@ describe Onfido do
   subject(:onfido) { described_class }
 
   context 'configuration' do
-    before do
-      onfido.reset
-    end
+    before { onfido.reset }
 
-    { api_key: nil,
-      endpoint: 'https://api.onfido.com/v1/',
-      throws_exceptions: true }.each do |config_key, value|
-      describe ".#{config_key}" do
-        it 'returns the default value' do
-          expect(onfido.public_send(config_key)).to eq(value)
-        end
+    describe "default values" do
+      describe ".api_key" do
+        subject { onfido.api_key }
+        it { is_expected.to be_nil }
+      end
+
+      describe ".endpoint" do
+        subject { onfido.endpoint }
+        it { is_expected.to eq('https://api.onfido.com/v1/') }
+      end
+
+      describe ".logger" do
+        subject { onfido.logger }
+        it { is_expected.to be_an_instance_of(Onfido::NullLogger) }
       end
     end
 
-    { api_key: 'some_key',
-      throws_exceptions: false }.each do |config_key, new_value|
-      describe ".#{config_key}=" do
-        it 'changes the configuration to the new value' do
-          onfido.public_send("#{config_key}=", new_value)
-          expect(onfido.public_send(config_key)).to eq(new_value)
-        end
+    describe "setting an API key" do
+      it 'changes the configuration to the new value' do
+        onfido.api_key = 'some_key'
+        expect(onfido.api_key).to eq('some_key')
       end
     end
 
     describe '.logger' do
-      context 'when no option is passed' do
-        it 'returns the default value' do
-          expect(onfido.logger).to be_an_instance_of(Onfido::NullLogger)
-        end
-      end
-
       context 'when an option is passed' do
         context 'when the option passed behaves like a logger' do
           let(:logger_like) { double('LoggerLike', :<< => nil) }

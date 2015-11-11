@@ -11,66 +11,27 @@ describe Onfido::Resource do
   context '4xx response' do
     let(:path) { '4xx_response' }
 
-    context "when 'throws_exceptions' is true" do
-      before { allow(Onfido).to receive(:throws_exceptions).and_return(true) }
-
-      it 'raises a custom error' do
-        expect { resource.get(url: url, payload: payload) }.
-          to raise_error(Onfido::RequestError, 'Something went wrong')
-      end
-    end
-
-    context "when 'throws_exceptions' is false" do
-      before { allow(Onfido).to receive(:throws_exceptions).and_return(false) }
-
-      it 'returns the body as a hash' do
-        response = resource.get(url: url, payload: payload)
-        expect(response['error']).not_to be_nil
-      end
+    it 'raises a custom error' do
+      expect { resource.get(url: url, payload: payload) }.
+        to raise_error(Onfido::RequestError, 'Something went wrong')
     end
   end
 
   context 'unexpected error format' do
     let(:path) { 'unexpected_error_format' }
 
-    context "when 'throws_exceptions' is true" do
-      before { allow(Onfido).to receive(:throws_exceptions).and_return(true) }
-
-      it 'raises a custom error' do
-        expect { resource.get(url: url, payload: payload) }.
-          to raise_error(Onfido::RequestError, /response code was 400/)
-      end
-    end
-
-    context "when 'throws_exceptions' is false" do
-      before { allow(Onfido).to receive(:throws_exceptions).and_return(false) }
-
-      it 'still raises a custom error' do
-        expect { resource.get(url: url, payload: payload) }.
-          to raise_error(Onfido::RequestError, /response code was 400/)
-      end
+    it 'raises a custom error' do
+      expect { resource.get(url: url, payload: payload) }.
+        to raise_error(Onfido::RequestError, /response code was 400/)
     end
   end
 
   context 'unparseable JSON' do
     let(:path) { 'unparseable_response' }
 
-    context "when 'throws_exceptions' is true" do
-      before { allow(Onfido).to receive(:throws_exceptions).and_return(true) }
-
-      it 'raises a custom error' do
-        expect { resource.get(url: url, payload: payload) }.
-          to raise_error(Onfido::RequestError, /response code was 504/)
-      end
-    end
-
-    context "when 'throws_exceptions' is false" do
-      before { allow(Onfido).to receive(:throws_exceptions).and_return(false) }
-
-      it 'still raises a custom error' do
-        expect { resource.get(url: url, payload: payload) }.
-          to raise_error(Onfido::RequestError, /response code was 504/)
-      end
+    it 'raises a custom error' do
+      expect { resource.get(url: url, payload: payload) }.
+        to raise_error(Onfido::RequestError, /response code was 504/)
     end
   end
 

@@ -28,13 +28,12 @@ Or install it yourself as:
 
 ## Usage
 
-There are 5 configuration options for Onfido, including your `api_key`, throwing exceptions for failed responses and logging the requests. By default, `throws_exceptions` is set to `true`. If set to `false` and Onfido responds with a valid JSON body the response body will be returned instead.
+There are 4 configuration options for Onfido, including your `api_key`, timeout details and logging.
 
 ```ruby
   Onfido.configure do |config|
     config.api_key = 'MY_API_KEY'
     config.logger = Logger.new(STDOUT)
-    config.throws_exceptions = false
     config.open_timeout = 30
     config.read_timeout = 80
   end
@@ -145,23 +144,19 @@ api.check.all('applicant_id', page: 2, per_page: 10)
 
 ## Error Handling
 
-By default, Onfido will attempt to raise errors returned by the API automatically.
-
-If you set the `throws_exceptions` to false, it will simply return the response body. This allows you to handle errors manually.
-
-If you rescue `Onfido::RequestError`, you are provided with the error message itself as well as the type of error, response code and fields that have errored. Here's how you might do that:
+If you rescue `Onfido::RequestError`, you are provided with the response code, response body and parsed JSON body, the type of error the the fields that have errored.
 
 ```ruby
   def create_applicant
     api.applicant.create(params)
   rescue Onfido::RequestError => e
-    e.type # returns 'validation_error'
-    e.fields # returns { "email": { "messages": ["invalid format"] } }
-    e.response_code # returns '401'
+    e.type          # => 'validation_error'
+    e.fields        # => { "email": { "messages": ["invalid format"] } }
+    e.response_code # => '422'
   end
 ```
 
-You can also rescue `Onfido::ConnectionError`, which is raised whenever something goes wrong with the connection to Onfido - you may wish to automatically retry these requests.
+You can also rescue `Onfido::ConnectionError`, which is raised when something goes wrong with the connection to Onfido. This is useful for adding automatic retries to your background jobs.
 
 ### Roadmap
 
