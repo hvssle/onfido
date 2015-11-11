@@ -5,6 +5,7 @@ require 'open-uri'
 
 require 'onfido/version'
 require 'onfido/configuration'
+require 'onfido/errors/onfido_error'
 require 'onfido/errors/request_error'
 require 'onfido/errors/connection_error'
 require 'onfido/null_logger'

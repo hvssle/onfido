@@ -1,4 +1,4 @@
 module Onfido
-  class ConnectionError < StandardError
+  class ConnectionError < OnfidoError
   end
 end

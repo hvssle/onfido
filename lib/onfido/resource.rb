@@ -82,7 +82,8 @@ module Onfido
           parsed_response["error"]['message'],
           type: parsed_response["error"]["type"],
           fields: parsed_response["error"]["fields"],
-          response_code: response.code)
+          response_code: response.code,
+          response_body: response.body)
       else
         parsed_response
       end
@@ -92,7 +93,8 @@ module Onfido
       raise RequestError.new(
         "Invalid response object from API: #{response_body} " \
         "(HTTP response code was #{response_code})",
-        response_code: response_code
+        response_code: response_code,
+        response_body: response_body
       )
     end
 

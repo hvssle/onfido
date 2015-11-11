@@ -1,29 +1,18 @@
-# The class will handle response failures coming from Onfido
-# It's main purpose is to produce meaningful error messages to the user e.g.
-#
-#   RequestError: Authorization error: please re-check your credentials
-#
-# Users can also rescue the error and insect its type and affected fields as
-# specified in the Onfido documentation e.g.
-#
-#   begin
-#     # error being raised
-#   rescue Onfido::RequestError => e
-#     e.type
-#     e.fields
-#   end
-#
-
 module Onfido
-  class RequestError < StandardError
-    attr_accessor :type, :fields, :response_code
+  class RequestError < OnfidoError
+    attr_accessor :fields
 
-    def initialize(message = nil, type: nil, fields: nil, response_code: nil)
-      @type = type
+    def initialize(message = nil,
+                   type: nil,
+                   response_code: nil,
+                   response_body: nil,
+                   fields: nil)
       @fields = fields
-      @response_code = response_code
 
-      super(message)
+      super(message,
+            type: type,
+            response_code: response_code,
+            response_body: response_body)
     end
   end
 end
