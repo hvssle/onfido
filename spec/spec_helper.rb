@@ -4,6 +4,7 @@ Dir[File.dirname(__FILE__).concat("/support/**/*.rb")].each { |f| require f }
 
 require 'onfido'
 require 'webmock/rspec'
+require 'rspec/its'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

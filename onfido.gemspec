@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 1.22'
   spec.add_development_dependency 'rubocop', '~> 0.35.0'
   spec.add_development_dependency 'rspec', '~> 3.1'
+  spec.add_development_dependency 'rspec-its', '~> 1.2'
   spec.add_development_dependency 'sinatra', '~> 1.4'
 
   spec.add_dependency 'rest-client', '~> 1.8.0'

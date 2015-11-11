@@ -46,7 +46,7 @@ module Onfido
     end
 
     def parse(response)
-      JSON.parse(response.body)
+      JSON.parse(response.body.to_s)
     rescue JSON::ParserError
       general_api_error(response.code, response.body)
     end
@@ -80,8 +80,6 @@ module Onfido
       if Onfido.throws_exceptions
         raise RequestError.new(
           parsed_response["error"]['message'],
-          type: parsed_response["error"]["type"],
-          fields: parsed_response["error"]["fields"],
           response_code: response.code,
           response_body: response.body)
       else
