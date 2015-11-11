@@ -1,4 +1,4 @@
-## Unreleased
+## v0.1.0 11 November 2015
 
 - BREAKING: remove `throws_exceptions` option. We now always throw exceptions
   for errors. This option had become confusing since `Onfido::ConnectionError`
