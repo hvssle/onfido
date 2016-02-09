@@ -144,7 +144,12 @@ api.check.all('applicant_id', page: 2, per_page: 10)
 
 ## Error Handling
 
-If you rescue `Onfido::RequestError`, you are provided with the response code, response body and parsed JSON body, the type of error the the fields that have errored.
+There are three classes of errors raised by the library, all of which subclass `Onfido::Error`.
+- `Onfido::ServerError` is raised whenever Onfido returns a `5xx` response
+- `Onfido::RequestError` is raised whenever Onfido returns any other kind of error
+- `Onfido::ConnectionError` is raised whenever a network error occurs (e.g., a timeout)
+
+All three error classes provide the `response_code`, `response_body`, `json_body`, `type` and `fields` of the error (although for `Onfido::ServerError` and `Onfido::ConnectionError` the last three are likely to be `nil`).
 
 ```ruby
   def create_applicant
@@ -155,8 +160,6 @@ If you rescue `Onfido::RequestError`, you are provided with the response code, r
     e.response_code # => '422'
   end
 ```
-
-You can also rescue `Onfido::ConnectionError`, which is raised when something goes wrong with the connection to Onfido. This is useful for adding automatic retries to your background jobs.
 
 ### Roadmap
 
