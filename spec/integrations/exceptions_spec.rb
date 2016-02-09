@@ -24,12 +24,12 @@ describe Onfido::Resource do
     end
   end
 
-  context 'unparseable JSON' do
+  context 'unparseable JSON 5xx' do
     let(:path) { 'unparseable_response' }
 
-    it 'raises a custom error' do
+    it 'raises a server error' do
       expect { resource.get(url: url, payload: payload) }.
-        to raise_error(Onfido::RequestError, /response code was 504/)
+        to raise_error(Onfido::ServerError, /response code was 504/)
     end
   end
 

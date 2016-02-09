@@ -77,7 +77,9 @@ module Onfido
         general_api_error(response.code, response.body)
       end
 
-      raise RequestError.new(
+      error_class = response.code.to_i >= 500 ? ServerError : RequestError
+
+      raise error_class.new(
         parsed_response["error"]['message'],
         response_code: response.code,
         response_body: response.body
@@ -85,7 +87,9 @@ module Onfido
     end
 
     def general_api_error(response_code, response_body)
-      raise RequestError.new(
+      error_class = response_code.to_i >= 500 ? ServerError : RequestError
+
+      raise error_class.new(
         "Invalid response object from API: #{response_body} " \
         "(HTTP response code was #{response_code})",
         response_code: response_code,
