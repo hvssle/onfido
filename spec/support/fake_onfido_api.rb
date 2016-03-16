@@ -51,7 +51,6 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(200, 'webhooks.json')
   end
 
-
   get '/v1/4xx_response' do
     json_response(422, '4xx_response.json')
   end

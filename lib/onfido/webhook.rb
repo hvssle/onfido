@@ -13,6 +13,5 @@ module Onfido
         payload: {}
       )
     end
-
   end
 end
