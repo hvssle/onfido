@@ -1,4 +1,8 @@
-## v0.2.0, 9 February 2015
+## v0.3.0, 16 March 2016
+
+- Add support for `Onfido::Webhook` resource
+
+## v0.2.0, 9 February 2016
 
 - BREAKING: adds `Onfido::ServerError`, which is raised whenever Onfido responds
   with a 5xx code. Previously `Onfido::RequestError` would have been raised, but
