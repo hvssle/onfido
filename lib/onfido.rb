@@ -16,6 +16,7 @@ require 'onfido/applicant'
 require 'onfido/document'
 require 'onfido/check'
 require 'onfido/report'
+require 'onfido/webhook'
 require 'onfido/api'
 
 module Onfido

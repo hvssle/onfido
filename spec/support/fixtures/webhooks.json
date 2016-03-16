@@ -1,0 +1,26 @@
+{
+  "webhooks": [
+    {
+      "id": "dd0a89e4-d44e-417a-aec4-01137d01ae59",
+      "url": "https://demo.com","enabled":false,
+      "href": "/v1/webhooks/dd0a89e4-d44e-417a-aec4-01137d01ae59",
+      "events":
+      [
+        "check in progress"
+      ]
+    },
+    {
+      "id": "bfc727a8-f7bf-4073-b123-ed70a70f58e5",
+      "url": "https://demo2.com",
+      "enabled": true,
+      "href": "/v1/webhooks/bfc727a8-f7bf-4073-b123-ed70a70f58e5",
+      "events":
+      [
+          "report completion",
+          "report withdrawal",
+          "check in progress",
+          "check completion"
+      ]
+    }
+  ]
+}
