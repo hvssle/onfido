@@ -15,20 +15,7 @@ Add this line to your application's Gemfile:
 gem 'onfido'
 ```
 
-And then execute:
-
-```
-$ bundle
-```
-
-Or install it yourself as:
-
-```
-$ gem install onfido
-```
-
-
-## Usage
+## Configuration
 
 There are 5 configuration options:
 
@@ -42,17 +29,19 @@ Onfido.configure do |config|
 end
 ```
 
+## Usage
+
 Assuming you have a valid key, you can conveniently make API calls by using an instance of the `API` class.
 
 ```ruby
 api = Onfido::API.new
 ```
 
-### Making requests
-
 All resources share the same interface when making API calls. Use `.create` to create a resource, `.find` to find one, and `.all` to fetch all resources.
 
 **Note:** *All param keys should be a symbol e.g. `{ type: 'express', reports: [{ name: 'identity' }] }`*
+
+### Resources
 
 #### Applicants
 
@@ -134,7 +123,7 @@ api.webhook.all                     # => Returns all webhook endpoints
 All resources that support an `all` method also support pagination. By default,
 the first 20 records are fetched.
 
-## Error Handling
+### Error Handling
 
 There are three classes of errors raised by the library, all of which subclass `Onfido::Error`:
 - `Onfido::ServerError` is raised whenever Onfido returns a `5xx` response
@@ -153,7 +142,7 @@ rescue Onfido::RequestError => e
 end
 ```
 
-### Roadmap
+## Roadmap
 
 - Improve test coverage with more scenarios
 - Add custom errors based on the response code
