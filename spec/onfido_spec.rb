@@ -11,7 +11,7 @@ describe Onfido do
 
       describe ".endpoint" do
         subject { onfido.endpoint }
-        it { is_expected.to eq('https://api.onfido.com/v1/') }
+        it { is_expected.to eq('https://api.onfido.com/v2/') }
       end
 
       describe ".logger" do
@@ -24,6 +24,14 @@ describe Onfido do
       it 'changes the configuration to the new value' do
         onfido.api_key = 'some_key'
         expect(onfido.api_key).to eq('some_key')
+      end
+    end
+
+    describe "setting the API version" do
+      it 'changes the configuration to the new value' do
+        onfido.api_version = 'v1'
+        expect(onfido.api_version).to eq('v1')
+        expect(onfido.endpoint).to eq('https://api.onfido.com/v1/')
       end
     end
 

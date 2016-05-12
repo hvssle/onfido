@@ -3,7 +3,7 @@
   "url": "https://webhookendpoint.url",
   "token": "yV85IsmuYwmjQGlZ",
   "enabled": true,
-  "href": "/v1/webhooks/fcb73186-0733-4f6f-9c57-d9d5ef979443",
+  "href": "/v2/webhooks/fcb73186-0733-4f6f-9c57-d9d5ef979443",
   "events": [
     "report completion",
     "report withdrawal",

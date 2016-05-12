@@ -1,6 +1,6 @@
 module Onfido
   module Configuration
-    attr_accessor :api_key, :open_timeout, :read_timeout
+    attr_accessor :api_key, :open_timeout, :read_timeout, :api_version
 
     def self.extended(base)
       base.reset
@@ -14,6 +14,7 @@ module Onfido
       self.api_key = nil
       self.open_timeout = 30
       self.read_timeout = 80
+      self.api_version = 'v2'
       RestClient.log = nil
     end
 
@@ -30,7 +31,7 @@ module Onfido
     end
 
     def endpoint
-      'https://api.onfido.com/v1/'
+      "https://api.onfido.com/#{api_version}/"
     end
   end
 end

@@ -1,65 +1,65 @@
 require 'sinatra/base'
 
 class FakeOnfidoAPI < Sinatra::Base
-  get '/v1/addresses/pick' do
+  get '/v2/addresses/pick' do
     json_response(200, 'addresses.json')
   end
 
-  post '/v1/applicants' do
+  post '/v2/applicants' do
     json_response(201, 'applicant.json')
   end
 
-  get '/v1/applicants/:id' do
+  get '/v2/applicants/:id' do
     json_response(200, 'applicant.json')
   end
 
-  get '/v1/applicants' do
+  get '/v2/applicants' do
     response = json_response(200, 'applicants.json')
     { applicants: JSON.parse(response)['applicants'][pagination_range] }.to_json
   end
 
-  post '/v1/applicants/:id/documents' do
+  post '/v2/applicants/:id/documents' do
     json_response(201, 'document.json')
   end
 
-  post '/v1/applicants/:id/checks' do
+  post '/v2/applicants/:id/checks' do
     json_response(201, 'check.json')
   end
 
-  get '/v1/applicants/:id/checks/:id' do
+  get '/v2/applicants/:id/checks/:id' do
     json_response(200, 'check.json')
   end
 
-  get '/v1/applicants/:id/checks' do
+  get '/v2/applicants/:id/checks' do
     response = json_response(200, 'checks.json')
     { checks: JSON.parse(response)['checks'][pagination_range] }.to_json
   end
 
-  get '/v1/checks/:id/reports' do
+  get '/v2/checks/:id/reports' do
     json_response(200, 'reports.json')
   end
 
-  get '/v1/checks/:id/reports/:id' do
+  get '/v2/checks/:id/reports/:id' do
     json_response(200, 'report.json')
   end
 
-  post '/v1/webhooks' do
+  post '/v2/webhooks' do
     json_response(201, 'webhook.json')
   end
 
-  get '/v1/webhooks' do
+  get '/v2/webhooks' do
     json_response(200, 'webhooks.json')
   end
 
-  get '/v1/4xx_response' do
+  get '/v2/4xx_response' do
     json_response(422, '4xx_response.json')
   end
 
-  get '/v1/unexpected_error_format' do
+  get '/v2/unexpected_error_format' do
     json_response(400, 'unexpected_error_format.json')
   end
 
-  get '/v1/unparseable_response' do
+  get '/v2/unparseable_response' do
     content_type :json
     status 504
     ''

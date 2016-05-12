@@ -5,6 +5,8 @@ A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You
 [![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido)
 [![Build Status](https://travis-ci.org/hvssle/onfido.svg?branch=master)](https://travis-ci.org/hvssle/onfido)
 
+This gem supports both `v1` and `v2` of the Onfido API.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -24,11 +26,12 @@ Or install it yourself as:
 
 ## Usage
 
-There are 4 configuration options for Onfido, including your `api_key`, timeout details and logging.
+There are 5 configuration options:
 
 ```ruby
   Onfido.configure do |config|
     config.api_key = 'MY_API_KEY'
+    config.api_version = 'v2'
     config.logger = Logger.new(STDOUT)
     config.open_timeout = 30
     config.read_timeout = 80
