@@ -8,14 +8,11 @@ module Onfido
     end
 
     def find(webhooks_id)
-      get(url: url_for("webhooks/#{webhooks_id}"), payload: {})
+      get(url: url_for("webhooks/#{webhooks_id}"))
     end
 
-    def all
-      get(
-        url: url_for("webhooks"),
-        payload: {}
-      )
+    def all(page: 1, per_page: 20)
+      get(url: url_for("webhooks?page=#{page}&per_page=#{per_page}"))
     end
   end
 end

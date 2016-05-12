@@ -11,7 +11,7 @@ module Onfido
         make_request(
           method: method.to_sym,
           url: args.first.fetch(:url),
-          payload: build_query(args.first.fetch(:payload))
+          payload: build_query(args.first.fetch(:payload, {}))
         )
       end
     end

@@ -8,18 +8,12 @@ module Onfido
     end
 
     def find(applicant_id, check_id)
-      get(
-        url: url_for("applicants/#{applicant_id}/checks/#{check_id}"),
-        payload: {}
-      )
+      get(url: url_for("applicants/#{applicant_id}/checks/#{check_id}"))
     end
 
     def all(applicant_id, page: 1, per_page: 20)
       querystring = "page=#{page}&per_page=#{per_page}"
-      get(
-        url: url_for("applicants/#{applicant_id}/checks?#{querystring}"),
-        payload: {}
-      )
+      get(url: url_for("applicants/#{applicant_id}/checks?#{querystring}"))
     end
   end
 end
