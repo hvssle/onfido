@@ -77,7 +77,7 @@ api.document.create('applicant_id', file: 'http://example.com', type: 'passport'
 
 #### Live Photos
 
-Like documents, live photos can provide supporting evidence for Onfido checks.
+Live Photos, like documents, can provide supporting evidence for Onfido checks.
 They can only be created - the Onfido does not support finding or listing them.
 
 ```ruby
