@@ -1,11 +1,11 @@
 # Onfido
 
-A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You should always refer to the documentation for valid API calls.
+A thin wrapper for Onfido's API.
 
 [![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido)
 [![Build Status](https://travis-ci.org/hvssle/onfido.svg?branch=master)](https://travis-ci.org/hvssle/onfido)
 
-This gem supports both `v1` and `v2` of the Onfido API.
+This gem supports both `v1` and `v2` of the Onfido API. Refer to Onfido's [API documentation](https://onfido.com/documentation#introduction) for details of the expected requests and responses for both.
 
 ## Installation
 
@@ -17,11 +17,15 @@ gem 'onfido'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install onfido
+```
+$ gem install onfido
+```
 
 
 ## Usage
@@ -46,12 +50,12 @@ Assuming you have a valid key, you can conveniently make API calls by using an i
 
 ### Making calls to Onfido's resources
 
-All resources share the same interface when making API calls. For creating a resource you can use `.create`, for finding one `.find` and for fetching all records for a resource `.all`.
+All resources share the same interface when making API calls. Use `.create` to create a resource, `.find` to find one, and `.all` to fetch all resources.
 
 **Note:** *All param keys should be a symbol e.g. `{ type: 'express', reports: [{ name: 'identity' }] }`*
 
 
-### Applicant
+#### Applicant
 
 To create an applicant, you can simply use
 
@@ -71,7 +75,7 @@ To get all applicants
   api.applicant.all
 ```
 
-### Document
+#### Document
 
 To upload a document for an applicant, you can simply use
 
@@ -81,7 +85,7 @@ To upload a document for an applicant, you can simply use
 
 The file can both be a `File` object or a link to an image.
 
-### Check
+#### Check
 
 To create a check for an applicant, you can simply use
 
@@ -101,7 +105,7 @@ To get all checks for an applicant
   api.check.all('applicant_id')
 ```
 
-### Report
+#### Report
 
 To find an existing report for a check
 
@@ -115,7 +119,7 @@ To get all reports for a check
   api.report.all('check_id')
 ```
 
-### Address Picker
+#### Address Picker
 
 To search for addresses by postcode
 
@@ -143,7 +147,7 @@ api.check.all('applicant_id', page: 2, per_page: 10)
 
 ## Error Handling
 
-There are three classes of errors raised by the library, all of which subclass `Onfido::Error`.
+There are three classes of errors raised by the library, all of which subclass `Onfido::Error`:
 - `Onfido::ServerError` is raised whenever Onfido returns a `5xx` response
 - `Onfido::RequestError` is raised whenever Onfido returns any other kind of error
 - `Onfido::ConnectionError` is raised whenever a network error occurs (e.g., a timeout)
@@ -163,7 +167,7 @@ All three error classes provide the `response_code`, `response_body`, `json_body
 ### Roadmap
 
 - Improve test coverage with more scenarios
-- Add custom errors based on the response code.
+- Add custom errors based on the response code
 - Improve documentation
 
 ## Contributing
