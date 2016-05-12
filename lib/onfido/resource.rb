@@ -35,14 +35,14 @@ module Onfido
       response = RestClient::Request.execute(request_options)
 
       parse(response)
-    rescue RestClient::ExceptionWithResponse => e
-      if e.response
-        handle_api_error(e.response)
+    rescue RestClient::ExceptionWithResponse => error
+      if error.response
+        handle_api_error(error.response)
       else
-        handle_restclient_error(e, url)
+        handle_restclient_error(error, url)
       end
-    rescue RestClient::Exception, Errno::ECONNREFUSED => e
-      handle_restclient_error(e, url)
+    rescue RestClient::Exception, Errno::ECONNREFUSED => error
+      handle_restclient_error(error, url)
     end
 
     def parse(response)
@@ -97,13 +97,13 @@ module Onfido
       )
     end
 
-    def handle_restclient_error(e, url)
+    def handle_restclient_error(error, url)
       connection_message =
         "Please check your internet connection and try again. " \
         "If this problem persists, you should let us know at info@onfido.com."
 
       message =
-        case e
+        case error
         when RestClient::RequestTimeout
           "Could not connect to Onfido (#{url}). #{connection_message}"
 
@@ -127,7 +127,7 @@ module Onfido
           "If this problem persists, let us know at info@onfido.com."
         end
 
-      full_message = message + "\n\n(Network error: #{e.message})"
+      full_message = message + "\n\n(Network error: #{error.message})"
 
       raise ConnectionError.new(full_message)
     end
