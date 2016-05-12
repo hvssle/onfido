@@ -57,71 +57,52 @@ All resources share the same interface when making API calls. Use `.create` to c
 
 #### Applicant
 
-To create an applicant, you can simply use
+Applicants are the object upon which Onfido checks are performed.
 
 ```ruby
-api.applicant.create(params)
-```
-
-To find an existing applicant
-
-```ruby
-api.applicant.find('applicant_id')
-```
-
-To get all applicants
-
-```ruby
-api.applicant.all
+api.applicant.create(params)          # => Creates an applicant
+api.applicant.find('applicant_id')    # => Finds a single applicant
+api.applicant.all                     # => Returns all applicants
 ```
 
 #### Document
 
-To upload a document for an applicant, you can simply use
+Documents provide supporting evidence for Onfido checks. They can only be
+created - the Onfido does not support finding or listing them.
 
 ```ruby
 api.document.create('applicant_id', file: 'http://example.com', type: 'passport')
 ```
 
-The file can both be a `File` object or a link to an image.
+**Note:** The file parameter can be either a `File` object or a link to an image.
 
 #### Check
 
-To create a check for an applicant, you can simply use
+Checks are requests for Onfido to check an applicant, by commissioning one or
+more "reports" on them.
 
 ```ruby
 api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
-```
-
-To find an existing check for an applicant
-
-```ruby
 api.check.find('applicant_id', 'check_id')
-```
-
-To get all checks for an applicant
-
-```ruby
 api.check.all('applicant_id')
 ```
 
 #### Report
 
-To find an existing report for a check
+Reports provide details of the results of some part of a "check". They are
+created when a check is created, so the Onfido API only provides support for
+finding and listing them.
 
 ```ruby
 api.report.find('check_id', 'report_id')
-```
-
-To get all reports for a check
-
-```ruby
 api.report.all('check_id')
 ```
 
 #### Address Picker
 
-To search for addresses by postcode
+Onfido provides an address lookup service, to help ensure well-formatted
+addresses are provided when creating "applicants". To search for addresses
+by postcode, use:
 
 ```ruby
 api.address.all('SE1 4NG')
@@ -129,21 +110,8 @@ api.address.all('SE1 4NG')
 
 ### Pagination
 
-Currently, you can paginate over the *applicant* and *check* resources. However, since you can only create 1 check per applicant therefore paginating on the check resource might prove impractical.
-
-By default, both endpoints are fetching records the first 20 records. That is the maximum amount of records you can request per page.
-
-To paginate over *applicants*:
-```ruby
-api = Onfido::API.new
-api.applicant.all(page: 2, per_page: 10)
-```
-
-To paginate over *checks*:
-```
-api = Onfido::API.new
-api.check.all('applicant_id', page: 2, per_page: 10)
-```
+All resources that support an `all` method also support pagination. By default,
+the first 20 records are fetched.
 
 ## Error Handling
 
@@ -168,7 +136,7 @@ end
 
 - Improve test coverage with more scenarios
 - Add custom errors based on the response code
-- Improve documentation
+- Improve pagination handling (use information passed in link header)
 
 ## Contributing
 
