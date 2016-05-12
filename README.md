@@ -76,6 +76,17 @@ api.document.create('applicant_id', file: 'http://example.com', type: 'passport'
 
 **Note:** The file parameter can be either a `File` object or a link to an image.
 
+#### Live Photo
+
+Like documents, live photos can provide supporting evidence for Onfido checks.
+They can only be created - the Onfido does not support finding or listing them.
+
+```ruby
+api.live_photo.create('applicant_id', file: 'http://example.com')
+```
+
+**Note:** The file parameter can be either a `File` object or a link to an image.
+
 #### Check
 
 Checks are requests for Onfido to check an applicant, by commissioning one or
@@ -106,6 +117,17 @@ by postcode, use:
 
 ```ruby
 api.address.all('SE1 4NG')
+```
+
+#### Webhook Endpoints
+
+Onfido allows you to set up and view your webhook endpoints via the API, as well
+as through the dashboard.
+
+```ruby
+api.webhook.create(params)          # => Creates a webhook endpoint
+api.webhook.find('webhook_id')      # => Finds a single webhook endpoint
+api.webhook.all                     # => Returns all webhook endpoints
 ```
 
 ### Pagination
