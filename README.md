@@ -48,14 +48,13 @@ Assuming you have a valid key, you can conveniently make API calls by using an i
 api = Onfido::API.new
 ```
 
-### Making calls to Onfido's resources
+### Making requests
 
 All resources share the same interface when making API calls. Use `.create` to create a resource, `.find` to find one, and `.all` to fetch all resources.
 
 **Note:** *All param keys should be a symbol e.g. `{ type: 'express', reports: [{ name: 'identity' }] }`*
 
-
-#### Applicant
+#### Applicants
 
 Applicants are the object upon which Onfido checks are performed.
 
@@ -65,7 +64,7 @@ api.applicant.find('applicant_id')    # => Finds a single applicant
 api.applicant.all                     # => Returns all applicants
 ```
 
-#### Document
+#### Documents
 
 Documents provide supporting evidence for Onfido checks. They can only be
 created - the Onfido does not support finding or listing them.
@@ -76,7 +75,7 @@ api.document.create('applicant_id', file: 'http://example.com', type: 'passport'
 
 **Note:** The file parameter can be either a `File` object or a link to an image.
 
-#### Live Photo
+#### Live Photos
 
 Like documents, live photos can provide supporting evidence for Onfido checks.
 They can only be created - the Onfido does not support finding or listing them.
@@ -87,7 +86,7 @@ api.live_photo.create('applicant_id', file: 'http://example.com')
 
 **Note:** The file parameter can be either a `File` object or a link to an image.
 
-#### Check
+#### Checks
 
 Checks are requests for Onfido to check an applicant, by commissioning one or
 more "reports" on them.
@@ -98,7 +97,7 @@ api.check.find('applicant_id', 'check_id')
 api.check.all('applicant_id')
 ```
 
-#### Report
+#### Reports
 
 Reports provide details of the results of some part of a "check". They are
 created when a check is created, so the Onfido API only provides support for
@@ -109,7 +108,7 @@ api.report.find('check_id', 'report_id')
 api.report.all('check_id')
 ```
 
-#### Address Picker
+#### Address Lookups
 
 Onfido provides an address lookup service, to help ensure well-formatted
 addresses are provided when creating "applicants". To search for addresses
