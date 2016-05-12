@@ -47,6 +47,10 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(201, 'webhook.json')
   end
 
+  get '/v2/webhooks/:id' do
+    json_response(200, 'webhook.json')
+  end
+
   get '/v2/webhooks' do
     json_response(200, 'webhooks.json')
   end

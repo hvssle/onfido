@@ -25,6 +25,15 @@ describe Onfido::Webhook do
     end
   end
 
+  describe '#find' do
+    let(:webhook_id) { 'fcb73186-0733-4f6f-9c57-d9d5ef979443' }
+
+    it 'returns the webhook' do
+      response = webhook.find(webhook_id)
+      expect(response['id']).to eq(webhook_id)
+    end
+  end
+
   describe "#all" do
     it "returns all the registered webhooks" do
       response = webhook.all
