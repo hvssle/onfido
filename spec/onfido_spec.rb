@@ -1,9 +1,8 @@
 describe Onfido do
   subject(:onfido) { described_class }
+  after(:each) { onfido.reset }
 
   context 'configuration' do
-    before { onfido.reset }
-
     describe "default values" do
       describe ".api_key" do
         subject { onfido.api_key }

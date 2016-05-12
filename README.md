@@ -5,10 +5,6 @@ A wrapper for Onfido's [API](https://onfido.com/documentation#introduction). You
 [![Gem Version](https://badge.fury.io/rb/onfido.svg)](http://badge.fury.io/rb/onfido)
 [![Build Status](https://travis-ci.org/hvssle/onfido.svg?branch=master)](https://travis-ci.org/hvssle/onfido)
 
-
-  [1]: https://gitter.im/hvssle/onfido
-  [2]: https://badges.gitter.im/gitterHQ/developers.png
-
 ## Installation
 
 Add this line to your application's Gemfile:
