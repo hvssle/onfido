@@ -33,19 +33,19 @@ $ gem install onfido
 There are 5 configuration options:
 
 ```ruby
-  Onfido.configure do |config|
-    config.api_key = 'MY_API_KEY'
-    config.api_version = 'v2'
-    config.logger = Logger.new(STDOUT)
-    config.open_timeout = 30
-    config.read_timeout = 80
-  end
+Onfido.configure do |config|
+  config.api_key = 'MY_API_KEY'
+  config.api_version = 'v2'
+  config.logger = Logger.new(STDOUT)
+  config.open_timeout = 30
+  config.read_timeout = 80
+end
 ```
 
 Assuming you have a valid key, you can conveniently make API calls by using an instance of the `API` class.
 
 ```ruby
-  api = Onfido::API.new
+api = Onfido::API.new
 ```
 
 ### Making calls to Onfido's resources
@@ -60,19 +60,19 @@ All resources share the same interface when making API calls. Use `.create` to c
 To create an applicant, you can simply use
 
 ```ruby
-  api.applicant.create(params)
+api.applicant.create(params)
 ```
 
 To find an existing applicant
 
 ```ruby
-  api.applicant.find('applicant_id')
+api.applicant.find('applicant_id')
 ```
 
 To get all applicants
 
 ```ruby
-  api.applicant.all
+api.applicant.all
 ```
 
 #### Document
@@ -80,7 +80,7 @@ To get all applicants
 To upload a document for an applicant, you can simply use
 
 ```ruby
-  api.document.create('applicant_id', file: 'http://example.com', type: 'passport')
+api.document.create('applicant_id', file: 'http://example.com', type: 'passport')
 ```
 
 The file can both be a `File` object or a link to an image.
@@ -90,19 +90,19 @@ The file can both be a `File` object or a link to an image.
 To create a check for an applicant, you can simply use
 
 ```ruby
-  api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
+api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
 ```
 
 To find an existing check for an applicant
 
 ```ruby
-  api.check.find('applicant_id', 'check_id')
+api.check.find('applicant_id', 'check_id')
 ```
 
 To get all checks for an applicant
 
 ```ruby
-  api.check.all('applicant_id')
+api.check.all('applicant_id')
 ```
 
 #### Report
@@ -110,13 +110,13 @@ To get all checks for an applicant
 To find an existing report for a check
 
 ```ruby
-  api.report.find('check_id', 'report_id')
+api.report.find('check_id', 'report_id')
 ```
 
 To get all reports for a check
 
 ```ruby
-  api.report.all('check_id')
+api.report.all('check_id')
 ```
 
 #### Address Picker
@@ -124,7 +124,7 @@ To get all reports for a check
 To search for addresses by postcode
 
 ```ruby
-  api.address.all('SE1 4NG')
+api.address.all('SE1 4NG')
 ```
 
 ### Pagination
@@ -155,13 +155,13 @@ There are three classes of errors raised by the library, all of which subclass `
 All three error classes provide the `response_code`, `response_body`, `json_body`, `type` and `fields` of the error (although for `Onfido::ServerError` and `Onfido::ConnectionError` the last three are likely to be `nil`).
 
 ```ruby
-  def create_applicant
-    api.applicant.create(params)
-  rescue Onfido::RequestError => e
-    e.type          # => 'validation_error'
-    e.fields        # => { "email": { "messages": ["invalid format"] } }
-    e.response_code # => '422'
-  end
+def create_applicant
+  api.applicant.create(params)
+rescue Onfido::RequestError => e
+  e.type          # => 'validation_error'
+  e.fields        # => { "email": { "messages": ["invalid format"] } }
+  e.response_code # => '422'
+end
 ```
 
 ### Roadmap
