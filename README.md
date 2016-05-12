@@ -31,17 +31,17 @@ end
 
 ## Usage
 
-Assuming you have a valid key, you can conveniently make API calls by using an instance of the `API` class.
+You can make API calls by using an instance of the `API` class:
 
 ```ruby
 api = Onfido::API.new
 ```
 
+### Resources
+
 All resources share the same interface when making API calls. Use `.create` to create a resource, `.find` to find one, and `.all` to fetch all resources.
 
 **Note:** *All param keys should be a symbol e.g. `{ type: 'express', reports: [{ name: 'identity' }] }`*
-
-### Resources
 
 #### Applicants
 
