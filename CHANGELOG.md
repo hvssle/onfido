@@ -1,3 +1,11 @@
+## v0.4.0, 12 May 2016
+
+- BREAKING: target v2 of the Onfido API. To continue using v1, specify this
+  version in `Onfido.configure`
+- Add `api_version` configuration option
+  (see https://github.com/hvssle/onfido#configuration)
+- Add support for `Onfido::LivePhoto` resource
+
 ## v0.3.0, 16 March 2016
 
 - Add support for `Onfido::Webhook` resource
