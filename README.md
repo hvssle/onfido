@@ -142,6 +142,22 @@ rescue Onfido::RequestError => e
 end
 ```
 
+## Webhooks
+
+Each webhook endpoint has a secret token, generated automatically and [exposed](https://onfido.com/documentation#register-webhook) in the API. When sending a request, Onfido includes a signature computed using the request body and this token in the `X-Signature` header.
+
+This provided signature [should](https://onfido.com/documentation#webhook-security) be compared to one you generate yourself with the token to check that a webhook is a genuine request from Onfido.
+
+```ruby
+if Onfido::Webhook.valid?(request.raw_post,
+                          request.headers["X-Signature"],
+                          ENV['ONFIDO_WEBHOOK_TOKEN'])
+  process_webhook
+else
+  render status: 498, text: "498 Token expired/invalid"
+end
+```
+
 ## Roadmap
 
 - Improve test coverage with more scenarios
