@@ -1,3 +1,8 @@
+## v0.5.0, 7 June 2016
+
+- Add `Onfido::Webhook.valid?` method, for checking the signature of a webhook
+  from Onfido
+
 ## v0.4.0, 12 May 2016
 
 - BREAKING: target v2 of the Onfido API. To continue using v1, specify this
