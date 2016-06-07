@@ -2,6 +2,7 @@ require 'json'
 require 'rack'
 require 'rest-client'
 require 'open-uri'
+require 'openssl'
 
 require 'onfido/version'
 require 'onfido/configuration'
