@@ -1,3 +1,8 @@
+## v0.6.0, 7 July 2016
+
+- Add `expand` option to `Onfido::Check.find` and `Onfido::Check.all`. See
+  https://github.com/hvssle/onfido/pull/11 for details.
+
 ## v0.5.0, 7 June 2016
 
 - Add `Onfido::Webhook.valid?` method, for checking the signature of a webhook
