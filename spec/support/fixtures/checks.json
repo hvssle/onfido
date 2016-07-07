@@ -8,26 +8,8 @@
             "status": "pending",
             "result": "pending",
             "reports": [
-                {
-                    "id": "6951786-123123-422221",
-                    "name": "identity",
-                    "created_at": "2014-05-23T13:50:33Z",
-                    "status": "awaiting_applicant",
-                    "result": "pending",
-                    "href": "/v2/checks/8546921-123123-123123/reports/6951786-123123-422221",
-                    "breakdown": {},
-                    "properties": {}
-                },
-                {
-                    "id": "6951786-123123-316712",
-                    "name": "document",
-                    "created_at": "2014-05-23T13:50:33Z",
-                    "status": "awaiting_applicant",
-                    "result": "pending",
-                    "href": "/v2/checks/8546921-123123-123123/reports/6951786-123123-316712",
-                    "breakdown": {},
-                    "properties": {}
-                }
+              "1030303-123123-375629",
+              "1030303-123123-456789"
             ]
         }
     ]
