@@ -18,6 +18,16 @@ describe Onfido::Check do
       response = check.find(applicant_id, check_id)
       expect(response['id']).to eq(check_id)
     end
+
+    it "returns unexpanded reports" do
+      response = check.find(applicant_id, check_id)
+      expect(response['reports'].first).to be_a(String)
+    end
+
+    it 'allows you to expand the reports' do
+      response = check.find(applicant_id, check_id, expand: "reports")
+      expect(response['reports'].first).to be_a(Hash)
+    end
   end
 
   describe '#all' do
@@ -28,6 +38,16 @@ describe Onfido::Check do
         response = check.all(applicant_id)
         expect(response['checks'].size).to eq(1)
       end
+    end
+
+    it "returns unexpanded reports" do
+      response = check.all(applicant_id)
+      expect(response['checks'].first['reports'].first).to be_a(String)
+    end
+
+    it 'allows you to expand the reports' do
+      response = check.all(applicant_id, expand: "reports")
+      expect(response['checks'].first['reports'].first).to be_a(Hash)
     end
   end
 end

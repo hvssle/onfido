@@ -31,11 +31,20 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v2/applicants/:id/checks/:id' do
-    json_response(200, 'check.json')
+    if params["expand"] == "reports"
+      json_response(200, "check_with_expanded_reports.json")
+    else
+      json_response(200, "check.json")
+    end
   end
 
   get '/v2/applicants/:id/checks' do
-    response = json_response(200, 'checks.json')
+    response = if params["expand"] == "reports"
+                 json_response(200, "checks_with_expanded_reports.json")
+               else
+                 json_response(200, "checks.json")
+               end
+
     { checks: JSON.parse(response)['checks'][pagination_range] }.to_json
   end
 
