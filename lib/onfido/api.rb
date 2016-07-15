@@ -1,7 +1,7 @@
 module Onfido
   class API
     def method_missing(method, *args)
-      klass = method.to_s.capitalize
+      klass = method.to_s.split('_').collect(&:capitalize).join
       Object.const_get("Onfido::#{klass}").new
     rescue NameError
       super
