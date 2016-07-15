@@ -1,3 +1,8 @@
+## v0.6.1, 15 July 2016
+
+- Fix `Onfido::API.live_photo` so it returns an `Onfido::LivePhoto` instance
+  (see https://github.com/hvssle/onfido/pull/14)
+
 ## v0.6.0, 7 July 2016
 
 - Add `expand` option to `Onfido::Check.find` and `Onfido::Check.all`. See
