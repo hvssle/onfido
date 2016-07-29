@@ -2,6 +2,10 @@ module Onfido
   class Resource
     VALID_HTTP_METHODS = %i(get post).freeze
 
+    def initialize(api_key = nil)
+      @api_key = api_key
+    end
+
     def url_for(path)
       Onfido.endpoint + path
     end
@@ -53,7 +57,7 @@ module Onfido
 
     def headers
       {
-        'Authorization' => "Token token=#{Onfido.api_key}",
+        'Authorization' => "Token token=#{@api_key || Onfido.api_key}",
         'Accept' => "application/json"
       }
     end

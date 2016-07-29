@@ -1,8 +1,12 @@
 module Onfido
   class API
+    def initialize(api_key = nil)
+      @api_key = api_key
+    end
+
     def method_missing(method, *args)
       klass = method.to_s.split('_').collect(&:capitalize).join
-      Object.const_get("Onfido::#{klass}").new
+      Object.const_get("Onfido::#{klass}").new(@api_key)
     rescue NameError
       super
     end
