@@ -37,6 +37,12 @@ You can make API calls by using an instance of the `API` class:
 api = Onfido::API.new
 ```
 
+Alternatively, you can set an API key here instead of in the initializer:
+
+```ruby
+api = Onfido::API.new('API_KEY')
+```
+
 ### Resources
 
 All resources share the same interface when making API calls. Use `.create` to create a resource, `.find` to find one, and `.all` to fetch all resources.
