@@ -40,7 +40,7 @@ api = Onfido::API.new
 Alternatively, you can set an API key here instead of in the initializer:
 
 ```ruby
-api = Onfido::API.new('API_KEY')
+api = Onfido::API.new(api_key: 'API_KEY')
 ```
 
 ### Resources
