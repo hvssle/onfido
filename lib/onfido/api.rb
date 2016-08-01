@@ -1,7 +1,7 @@
 module Onfido
   class API
-    def initialize(api_key = nil)
-      @api_key = api_key
+    def initialize(options = {})
+      @api_key = options[:api_key]
     end
 
     def method_missing(method, *args)
