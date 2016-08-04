@@ -1,3 +1,5 @@
+require 'onfido/errors/connection_error'
+
 describe Onfido::Resource do
   subject(:resource) { described_class.new }
 
@@ -89,24 +91,40 @@ describe Onfido::Resource do
   describe "valid http methods" do
     %i(get post).each do |method|
       context "for supported HTTP method: #{method}" do
-        before do
-          expect(RestClient::Request).to receive(:execute).
-            with(
-              url: url,
-              payload: Rack::Utils.build_query(payload),
-              method: method,
-              headers: resource.send(:headers),
-              open_timeout: 30,
-              timeout: 80
-            ).and_call_original
+        context "with a success response" do
+          before do
+            expect(RestClient::Request).to receive(:execute).
+              with(
+                url: url,
+                payload: Rack::Utils.build_query(payload),
+                method: method,
+                headers: resource.send(:headers),
+                open_timeout: 30,
+                timeout: 80
+              ).and_call_original
 
-          WebMock.stub_request(method, url).
-            to_return(body: response.to_json, status: 200)
+            WebMock.stub_request(method, url).
+              to_return(body: response.to_json, status: 200)
+          end
+
+          it 'makes a request to an endpoint' do
+            expect(resource.public_send(method, url: url, payload: payload)).
+              to eq(response)
+          end
         end
 
-        it 'makes a request to an endpoint' do
-          expect(resource.public_send(method, url: url, payload: payload)).
-            to eq(response)
+        context "with a timeout error response" do
+          before do
+            allow_any_instance_of(RestClient::ExceptionWithResponse).
+              to receive(:response).and_return(double(body: "", code: "408"))
+            expect(RestClient::Request).to receive(:execute).
+              and_raise(RestClient::ExceptionWithResponse)
+          end
+
+          it "raises a ConnectionError" do
+            expect { resource.public_send(method, url: url, payload: payload) }.
+              to raise_error(Onfido::ConnectionError)
+          end
         end
       end
     end
