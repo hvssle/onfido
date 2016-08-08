@@ -1,3 +1,10 @@
+## v0.7.0, 8 August 2016
+
+- Add support for dynamic API keys
+  (see https://github.com/hvssle/onfido#usage)
+- Fix `Onfido::Resource` so it raises `Onfido::ConnectionError` on
+  HTTP Error 408 Request Timeout
+
 ## v0.6.1, 15 July 2016
 
 - Fix `Onfido::API.live_photo` so it returns an `Onfido::LivePhoto` instance
