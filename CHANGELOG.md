@@ -1,3 +1,7 @@
+## v0.7.1, 5 September 2016
+
+- Fix creation of live photos through `Onfido::LivePhoto` resource
+
 ## v0.7.0, 8 August 2016
 
 - Add support for dynamic API keys
