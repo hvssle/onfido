@@ -47,14 +47,13 @@ describe Onfido::Resource do
     subject(:resource) { described_class.new(specific_api_key) }
 
     before do
-      expect(RestClient::Request).to receive(:execute).
-        with(
-          url: url,
-          payload: Rack::Utils.build_query(payload),
-          method: :get,
-          headers: resource.send(:headers),
-          open_timeout: 30,
-          timeout: 80
+      expect(RestClient::Request).to receive(:execute).with(
+        url: url,
+        payload: Rack::Utils.build_query(payload),
+        method: :get,
+        headers: resource.send(:headers),
+        open_timeout: 30,
+        timeout: 80
       ).and_call_original
 
       WebMock.stub_request(:get, url).
@@ -67,10 +66,11 @@ describe Onfido::Resource do
       it "uses that key when making the request" do
         resource.get(url: url, payload: payload)
 
-        expect(WebMock).to have_requested(:get, url).with(headers: {
-          'Authorization' => "Token token=#{specific_api_key}",
-          'Accept' => "application/json"
-        })
+        expect(WebMock).to have_requested(:get, url).with(
+          headers: {
+            'Authorization' => "Token token=#{specific_api_key}",
+            'Accept' => "application/json"
+          })
       end
     end
 
@@ -80,10 +80,11 @@ describe Onfido::Resource do
       it "uses the general config key when making the request" do
         resource.get(url: url, payload: payload)
 
-        expect(WebMock).to have_requested(:get, url).with(headers: {
-          'Authorization' => "Token token=#{api_key}",
-          'Accept' => "application/json"
-        })
+        expect(WebMock).to have_requested(:get, url).with(
+          headers: {
+            'Authorization' => "Token token=#{api_key}",
+            'Accept' => "application/json"
+          })
       end
     end
   end
