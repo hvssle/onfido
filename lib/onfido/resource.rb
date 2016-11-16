@@ -1,6 +1,6 @@
 module Onfido
   class Resource
-    VALID_HTTP_METHODS = %i(get post).freeze
+    VALID_HTTP_METHODS = %i(get post put delete).freeze
     REQUEST_TIMEOUT_HTTP_CODE = 408
 
     def initialize(api_key = nil)
@@ -39,7 +39,8 @@ module Onfido
 
       response = RestClient::Request.execute(request_options)
 
-      parse(response)
+      #response should be parsed only when there is a response expected
+      parse(response) if response.code != 204 #no_content
     rescue RestClient::ExceptionWithResponse => error
       if error.response && !timeout_response?(error.response)
         handle_api_error(error.response)
