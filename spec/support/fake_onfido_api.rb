@@ -84,6 +84,14 @@ class FakeOnfidoAPI < Sinatra::Base
     status 204
   end
 
+  get '/v2/report_type_groups/:id' do
+    json_response(200, 'report_type_group.json')
+  end
+
+  get '/v2/report_type_groups' do
+    json_response(200, 'report_type_groups.json')
+  end
+
   post '/v2/webhooks' do
     json_response(201, 'webhook.json')
   end

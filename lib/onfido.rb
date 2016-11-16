@@ -19,6 +19,7 @@ require 'onfido/resources/check'
 require 'onfido/resources/document'
 require 'onfido/resources/live_photo'
 require 'onfido/resources/report'
+require 'onfido/resources/report_type_group'
 require 'onfido/resources/webhook'
 
 module Onfido
