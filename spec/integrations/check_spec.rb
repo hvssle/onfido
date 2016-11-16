@@ -50,4 +50,12 @@ describe Onfido::Check do
       expect(response['checks'].first['reports'].first).to be_a(Hash)
     end
   end
+
+  describe "#resume" do
+    let(:check_id) { '8546921-123123-123123' }
+
+    it 'returns success response' do
+      expect{ check.resume(check_id) }.not_to raise_error
+    end
+  end
 end
