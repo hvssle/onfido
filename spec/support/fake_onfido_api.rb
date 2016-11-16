@@ -68,6 +68,14 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(200, 'report.json')
   end
 
+  post '/v2/checks/:id/reports/:id/resume' do
+    status 204
+  end
+
+  post '/v2/checks/:id/reports/:id/cancel' do
+    status 204
+  end
+
   post '/v2/webhooks' do
     json_response(201, 'webhook.json')
   end
