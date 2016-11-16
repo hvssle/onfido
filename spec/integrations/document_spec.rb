@@ -45,4 +45,14 @@ describe Onfido::Document do
     end
   end
 
+  describe '#download' do
+    let(:applicant_id) { '1030303-123123-123123' }
+    let(:document_id) { '1212121-123123-123123' }
+
+    it 'returns binary file data' do
+      response = document.download(applicant_id, document_id)
+      expect(response).not_to be_nil
+    end
+  end
+
 end

@@ -14,6 +14,10 @@ module Onfido
       get(url: url_for("applicants/#{applicant_id}/documents/#{document_id}"))
     end
 
+    def download(applicant_id, document_id)
+      get(url: url_for("applicants/#{applicant_id}/documents/#{document_id}/download"))
+    end
+
     def all(applicant_id)
       get(url: url_for("applicants/#{applicant_id}/documents"))
     end

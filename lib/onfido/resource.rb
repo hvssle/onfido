@@ -52,7 +52,11 @@ module Onfido
     end
 
     def parse(response)
-      JSON.parse(response.body.to_s)
+      if response.headers[:content_type] == "application/octet-stream"
+        response.body
+      else
+        JSON.parse(response.body.to_s)
+      end
     rescue JSON::ParserError
       general_api_error(response.code, response.body)
     end
