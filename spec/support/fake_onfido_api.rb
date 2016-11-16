@@ -30,6 +30,14 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(201, 'document.json')
   end
 
+  get '/v2/applicants/:id/documents/:id' do
+    json_response(200, 'document.json')
+  end
+
+  get '/v2/applicants/:id/documents' do
+    json_response(200, 'documents.json')
+  end
+
   post '/v2/live_photos' do
     json_response(201, 'live_photo.json')
   end

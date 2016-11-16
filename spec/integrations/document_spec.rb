@@ -25,4 +25,24 @@ describe Onfido::Document do
       expect(response['id']).not_to be_nil
     end
   end
+
+  describe '#find' do
+    let(:applicant_id) { '1030303-123123-123123' }
+    let(:document_id) { '1212121-123123-123123' }
+
+    it 'returns expected document' do
+      response = document.find(applicant_id, document_id)
+      expect(response['id']).not_to be_nil
+    end
+  end
+
+  describe '#all' do
+    let(:applicant_id) { '1030303-123123-123123' }
+
+    it 'returns expected document' do
+      response = document.all(applicant_id)
+      expect(response['documents']).not_to be_empty
+    end
+  end
+
 end
