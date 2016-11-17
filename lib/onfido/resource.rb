@@ -40,7 +40,7 @@ module Onfido
       response = RestClient::Request.execute(request_options)
 
       #response should be parsed only when there is a response expected
-      parse(response) if response.code != 204 #no_content
+      parse(response) unless response.code == 204 #no_content
     rescue RestClient::ExceptionWithResponse => error
       if error.response && !timeout_response?(error.response)
         handle_api_error(error.response)
@@ -52,10 +52,10 @@ module Onfido
     end
 
     def parse(response)
-      if response.headers[:content_type] == "application/octet-stream"
-        response.body
-      else
+      if response.headers[:content_type] == "application/json"
         JSON.parse(response.body.to_s)
+      else
+        response.body
       end
     rescue JSON::ParserError
       general_api_error(response.code, response.body)

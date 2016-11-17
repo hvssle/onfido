@@ -79,7 +79,7 @@ describe Onfido::Applicant do
     let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
 
     it 'returns success code' do
-      expect{ applicant.destroy(applicant_id) }.not_to raise_error
+      expect { applicant.destroy(applicant_id) }.not_to raise_error
     end
   end
 

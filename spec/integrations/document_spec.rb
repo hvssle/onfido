@@ -28,18 +28,18 @@ describe Onfido::Document do
 
   describe '#find' do
     let(:applicant_id) { '1030303-123123-123123' }
-    let(:document_id) { '1212121-123123-123123' }
+    let(:document_id) { '7568415-123123-123123' }
 
-    it 'returns expected document' do
+    it 'returns the expected document' do
       response = document.find(applicant_id, document_id)
-      expect(response['id']).not_to be_nil
+      expect(response['id']).to eq(document_id)
     end
   end
 
   describe '#all' do
     let(:applicant_id) { '1030303-123123-123123' }
 
-    it 'returns expected document' do
+    it 'returns list of documents' do
       response = document.all(applicant_id)
       expect(response['documents']).not_to be_empty
     end
@@ -49,7 +49,7 @@ describe Onfido::Document do
     let(:applicant_id) { '1030303-123123-123123' }
     let(:document_id) { '1212121-123123-123123' }
 
-    it 'returns binary file data' do
+    it 'returns the file data' do
       response = document.download(applicant_id, document_id)
       expect(response).not_to be_nil
     end

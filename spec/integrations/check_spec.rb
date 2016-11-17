@@ -55,7 +55,7 @@ describe Onfido::Check do
     let(:check_id) { '8546921-123123-123123' }
 
     it 'returns success response' do
-      expect{ check.resume(check_id) }.not_to raise_error
+      expect { check.resume(check_id) }.not_to raise_error
     end
   end
 end
