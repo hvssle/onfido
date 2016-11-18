@@ -1,0 +1,25 @@
+{
+  "id": "8546921-123123-123123",
+  "name": "Senior level",
+  "group_only": false,
+  "report_types": [
+    {
+      "id": "4566764-567657-234445",
+      "name": "identity"
+    },
+    {
+      "id": "2344556-236767-786868",
+      "name": "right_to_work"
+    },
+    {
+      "id": "4523434-345133-234424",
+      "name": "directorship"
+    },
+    {
+      "id": "7857345-234234-565345",
+      "name": "criminal_history",
+      "variant": "basic",
+      "options": []
+    }
+  ]
+}

@@ -54,18 +54,22 @@ All resources share the same interface when making API calls. Use `.create` to c
 Applicants are the object upon which Onfido checks are performed.
 
 ```ruby
-api.applicant.create(params)          # => Creates an applicant
-api.applicant.find('applicant_id')    # => Finds a single applicant
-api.applicant.all                     # => Returns all applicants
+api.applicant.create(params)                  # => Creates an applicant
+api.applicant.update('applicant_id', params)  # => Updates an applicant
+api.applicant.destroy('applicant_id')         # => Destroy an applicant
+api.applicant.find('applicant_id')            # => Finds a single applicant
+api.applicant.all                             # => Returns all applicants
 ```
 
 #### Documents
 
-Documents provide supporting evidence for Onfido checks. They can only be
-created - the Onfido does not support finding or listing them.
+Documents provide supporting evidence for Onfido checks.
 
 ```ruby
-api.document.create('applicant_id', file: 'http://example.com', type: 'passport')
+api.document.create('applicant_id', file: 'http://example.com', type: 'passport') # => Creates a document
+api.document.find('applicant_id', 'document_id') # => Finds a document
+api.document.download('applicant_id', 'document_id') # => Downloads a document as a binary data
+api.document.all('applicant_id') # => Returns all applicant's documents
 ```
 
 **Note:** The file parameter can be either a `File` object or a link to an image.
@@ -89,6 +93,7 @@ more "reports" on them.
 ```ruby
 api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
 api.check.find('applicant_id', 'check_id')
+api.check.resume('check_id')
 api.check.all('applicant_id')
 ```
 
@@ -96,11 +101,23 @@ api.check.all('applicant_id')
 
 Reports provide details of the results of some part of a "check". They are
 created when a check is created, so the Onfido API only provides support for
-finding and listing them.
+finding and listing them. For paused reports specifically, additional support for resuming and
+ cancelling reports is also available.
 
 ```ruby
 api.report.find('check_id', 'report_id')
 api.report.all('check_id')
+api.report.resume('check_id', 'report_id')
+api.report.cancel('check_id', 'report_id')
+```
+
+#### Report Type Groups
+Report type groups provide a convenient way to group and organize different types of reports.
+ The Onfido API only provides support for finding and listing them.
+
+```ruby
+api.report_type_group.find('report_type_group_id')
+api.report_type_group.all()
 ```
 
 #### Address Lookups

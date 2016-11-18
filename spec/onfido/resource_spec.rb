@@ -32,11 +32,11 @@ describe Onfido::Resource do
   end
 
   describe '#method_missing' do
-    %i(put delete patch).each do |method|
+    %i(patch).each do |method|
       context "for unsupported HTTP method: #{method}" do
         it 'raises an error' do
           expect do
-            resource.public_send(method)
+            resource.public_send(method, url: endpoint)
           end.to raise_error(NoMethodError)
         end
       end
@@ -90,7 +90,7 @@ describe Onfido::Resource do
   end
 
   describe "valid http methods" do
-    %i(get post).each do |method|
+    %i(get post put delete).each do |method|
       context "for supported HTTP method: #{method}" do
         context "with a success response" do
           before do
@@ -105,7 +105,7 @@ describe Onfido::Resource do
               ).and_call_original
 
             WebMock.stub_request(method, url).
-              to_return(body: response.to_json, status: 200)
+              to_return(body: response.to_json, status: 200, headers: {"Content-Type"=> "application/json"})
           end
 
           it 'makes a request to an endpoint' do

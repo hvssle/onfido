@@ -1,3 +1,13 @@
+## v0.8.0, 16 November 2016
+
+- Add support for `put` and `delete` http methods to `Onfido::Resource`
+- Support no content and binary responses at `Onfido::Resource`
+- Add support for `Onfido::ReportTypeGroup` resource
+- Add support for update and destroy applicant resource
+- Add support for download, find and retrieve all for document resource
+- Add support for resume checks
+- Add support for resume and cancel report
+
 ## v0.7.1, 5 September 2016
 
 - Fix creation of live photos through `Onfido::LivePhoto` resource

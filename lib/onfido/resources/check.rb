@@ -18,5 +18,9 @@ module Onfido
       querystring += "&expand=#{expand}" if expand
       get(url: url_for("applicants/#{applicant_id}/checks?#{querystring}"))
     end
+
+    def resume(check_id)
+      post(url: url_for("checks/#{check_id}/resume"))
+    end
   end
 end

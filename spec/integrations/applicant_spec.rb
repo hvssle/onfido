@@ -56,12 +56,30 @@ describe Onfido::Applicant do
     end
   end
 
+  describe '#update' do
+    let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
+
+    it 'updates an applicant' do
+      response = applicant.update(applicant_id, params)
+      expect(response['id']).to eq(applicant_id)
+    end
+  end
+
+
   describe '#find' do
     let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
 
     it 'returns the applicant' do
       response = applicant.find(applicant_id)
       expect(response['id']).to eq(applicant_id)
+    end
+  end
+
+  describe '#destroy' do
+    let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
+
+    it 'returns success code' do
+      expect { applicant.destroy(applicant_id) }.not_to raise_error
     end
   end
 

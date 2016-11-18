@@ -9,6 +9,10 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(201, 'applicant.json')
   end
 
+  put '/v2/applicants/:id' do
+    json_response(200, 'applicant.json')
+  end
+
   get '/v2/applicants/:id' do
     json_response(200, 'applicant.json')
   end
@@ -18,8 +22,26 @@ class FakeOnfidoAPI < Sinatra::Base
     { applicants: JSON.parse(response)['applicants'][pagination_range] }.to_json
   end
 
+  delete '/v2/applicants/:id' do
+    status 204
+  end
+
   post '/v2/applicants/:id/documents' do
     json_response(201, 'document.json')
+  end
+
+  get '/v2/applicants/:id/documents/:id' do
+    json_response(200, 'document.json')
+  end
+
+  get '/v2/applicants/:id/documents' do
+    json_response(200, 'documents.json')
+  end
+
+  get '/v2/applicants/:id/documents/:id/download' do
+    status 200
+    content_type 'application/octet-stream'
+    "\x01\x02\x03" #acts as binary file data
   end
 
   post '/v2/live_photos' do
@@ -48,12 +70,32 @@ class FakeOnfidoAPI < Sinatra::Base
     { checks: JSON.parse(response)['checks'][pagination_range] }.to_json
   end
 
+  post '/v2/checks/:id/resume' do
+    status 204 #no_content
+  end
+
   get '/v2/checks/:id/reports' do
     json_response(200, 'reports.json')
   end
 
   get '/v2/checks/:id/reports/:id' do
     json_response(200, 'report.json')
+  end
+
+  post '/v2/checks/:id/reports/:id/resume' do
+    status 204
+  end
+
+  post '/v2/checks/:id/reports/:id/cancel' do
+    status 204
+  end
+
+  get '/v2/report_type_groups/:id' do
+    json_response(200, 'report_type_group.json')
+  end
+
+  get '/v2/report_type_groups' do
+    json_response(200, 'report_type_groups.json')
   end
 
   post '/v2/webhooks' do
