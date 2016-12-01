@@ -52,7 +52,8 @@ module Onfido
     end
 
     def parse(response)
-      if response.headers[:content_type] == "application/json"
+      content_type = response.headers[:content_type]
+      if content_type && content_type.include?("application/json")
         JSON.parse(response.body.to_s)
       else
         response.body
