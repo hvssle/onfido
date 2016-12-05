@@ -127,7 +127,7 @@ class FakeOnfidoAPI < Sinatra::Base
   private
 
   def json_response(response_code, file_name)
-    content_type :json
+    content_type "application/json; charset=utf-8"
     status response_code
     File.open(File.dirname(__FILE__) + '/fixtures/' + file_name, 'rb').read
   end
