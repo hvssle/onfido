@@ -65,7 +65,6 @@ describe Onfido::Applicant do
     end
   end
 
-
   describe '#find' do
     let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
 

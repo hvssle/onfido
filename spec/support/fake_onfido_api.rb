@@ -41,7 +41,7 @@ class FakeOnfidoAPI < Sinatra::Base
   get '/v2/applicants/:id/documents/:id/download' do
     status 200
     content_type 'application/octet-stream'
-    "\x01\x02\x03" #acts as binary file data
+    "\x01\x02\x03" # acts as binary file data
   end
 
   post '/v2/live_photos' do
@@ -71,7 +71,7 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   post '/v2/checks/:id/resume' do
-    status 204 #no_content
+    status 204 # no_content
   end
 
   get '/v2/checks/:id/reports' do

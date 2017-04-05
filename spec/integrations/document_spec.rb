@@ -54,5 +54,4 @@ describe Onfido::Document do
       expect(response).not_to be_nil
     end
   end
-
 end
