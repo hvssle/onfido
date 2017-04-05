@@ -35,6 +35,4 @@ describe Onfido::Report do
       expect { report.cancel(check_id, report_id) }.not_to raise_error
     end
   end
-
-
 end

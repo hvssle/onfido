@@ -30,7 +30,7 @@ Style/Encoding:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 80
+  Max: 90
 
 Metrics/ClassLength:
   Enabled: false

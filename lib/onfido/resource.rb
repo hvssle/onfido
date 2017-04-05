@@ -39,8 +39,8 @@ module Onfido
 
       response = RestClient::Request.execute(request_options)
 
-      #response should be parsed only when there is a response expected
-      parse(response) unless response.code == 204 #no_content
+      # response should be parsed only when there is a response expected
+      parse(response) unless response.code == 204 # no_content
     rescue RestClient::ExceptionWithResponse => error
       if error.response && !timeout_response?(error.response)
         handle_api_error(error.response)
