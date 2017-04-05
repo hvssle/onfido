@@ -1,3 +1,9 @@
+## v0.8.1, 5 April 2017
+
+- Fix `Content-Type` header handling to be more permissive when detecting JSON (e.g. still recognise the type as JSON when the charset is appended to the header) (@sponomarev)
+- Update [`rest-client`](https://github.com/rest-client/rest-client) dependency to 2.x (@timrogers)
+- Update [`WebMock`](https://github.com/bblimke/webmock) dependendency to 2.x (@timrogers)
+
 ## v0.8.0, 16 November 2016
 
 - Add support for `put` and `delete` http methods to `Onfido::Resource`
