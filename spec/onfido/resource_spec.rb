@@ -105,7 +105,9 @@ describe Onfido::Resource do
               ).and_call_original
 
             WebMock.stub_request(method, url).
-              to_return(body: response.to_json, status: 200, headers: { "Content-Type" => "application/json" })
+              to_return(body: response.to_json,
+                        status: 200,
+                        headers: { "Content-Type" => "application/json" })
           end
 
           it 'makes a request to an endpoint' do
