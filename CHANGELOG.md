@@ -1,3 +1,7 @@
+## v0.8.2, 21 April 2017
+
+- Relax [Rack](https://github.com/rack/rack) dependency to allow all versions where `Rack::Utils.secure_compare` is available (@metade)
+
 ## v0.8.1, 5 April 2017
 
 - Fix `Content-Type` header handling to be more permissive when detecting JSON (e.g. still recognise the type as JSON when the charset is appended to the header) (@sponomarev)

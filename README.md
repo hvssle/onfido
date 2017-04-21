@@ -12,7 +12,7 @@ This gem supports both `v1` and `v2` of the Onfido API. Refer to Onfido's [API d
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onfido', '~> 0.8.1'
+gem 'onfido', '~> 0.8.2'
 ```
 
 ## Configuration
