@@ -148,7 +148,7 @@ the first 20 records are fetched.
 
 ### Error Handling
 
-There are three classes of errors raised by the library, all of which subclass `Onfido::Error`:
+There are three classes of errors raised by the library, all of which subclass `Onfido::OnfidoError`:
 - `Onfido::ServerError` is raised whenever Onfido returns a `5xx` response
 - `Onfido::RequestError` is raised whenever Onfido returns any other kind of error
 - `Onfido::ConnectionError` is raised whenever a network error occurs (e.g., a timeout)
