@@ -70,7 +70,8 @@ describe Onfido::Resource do
           headers: {
             'Authorization' => "Token token=#{specific_api_key}",
             'Accept' => "application/json"
-          })
+          }
+        )
       end
     end
 
@@ -84,7 +85,8 @@ describe Onfido::Resource do
           headers: {
             'Authorization' => "Token token=#{api_key}",
             'Accept' => "application/json"
-          })
+          }
+        )
       end
     end
   end

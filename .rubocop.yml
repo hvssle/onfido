@@ -1,6 +1,7 @@
 # For all options see https://github.com/bbatsov/rubocop/tree/master/config
 
 AllCops:
+  DisplayCopNames: true
   Include:
     - Rakefile
     - lib/tasks/*.rake
@@ -12,15 +13,26 @@ AllCops:
 Style/StringLiterals:
   Enabled: false
 
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
 Style/SignalException:
   EnforcedStyle: only_raise
 
+Style/FileName:
+  Exclude:
+    - Gemfile
+
 Metrics/MethodLength:
   CountComments: false
   Max: 25
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
 
 Metrics/AbcSize:
   Max: 25
@@ -35,7 +47,7 @@ Metrics/LineLength:
 Metrics/ClassLength:
   Enabled: false
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 # Allow class and message or instance raises

@@ -19,11 +19,11 @@ module Onfido
     end
 
     def logger=(log)
-      if log.respond_to?(:<<)
-        RestClient.log = log
-      else
+      unless log.respond_to?(:<<)
         raise "#{log.class} doesn't seem to behave like a logger!"
       end
+
+      RestClient.log = log
     end
 
     def logger
