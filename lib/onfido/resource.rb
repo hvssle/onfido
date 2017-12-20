@@ -88,9 +88,7 @@ module Onfido
     def handle_api_error(response)
       parsed_response = parse(response)
 
-      unless parsed_response["error"]
-        general_api_error(response.code, response.body)
-      end
+      general_api_error(response.code, response.body) unless parsed_response["error"]
 
       error_class = response.code.to_i >= 500 ? ServerError : RequestError
 
