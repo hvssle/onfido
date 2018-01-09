@@ -98,6 +98,10 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(200, 'report_type_groups.json')
   end
 
+  post '/v2/sdk_token' do
+    json_response(201, 'sdk_token.json')
+  end
+
   post '/v2/webhooks' do
     json_response(201, 'webhook.json')
   end
