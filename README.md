@@ -112,6 +112,7 @@ api.report.cancel('check_id', 'report_id')
 ```
 
 #### Report Type Groups
+
 Report type groups provide a convenient way to group and organize different types of reports.
  The Onfido API only provides support for finding and listing them.
 
@@ -139,6 +140,15 @@ as through the dashboard.
 api.webhook.create(params)          # => Creates a webhook endpoint
 api.webhook.find('webhook_id')      # => Finds a single webhook endpoint
 api.webhook.all                     # => Returns all webhook endpoints
+```
+
+#### SDK Tokens
+
+Onfido allows you to generate JSON Web Tokens via the API in order to authenticate
+with Onfido's [JavaScript SDK](https://github.com/onfido/onfido-sdk-ui).
+
+```ruby
+api.sdk_token.create(applicant_id: 'applicant_id', referrer: 'referrer')
 ```
 
 ### Pagination
