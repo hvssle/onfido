@@ -1,3 +1,7 @@
+## v0.8.3, 16 January 2018
+
+Add support for `Onfido::SdkToken` resource
+
 ## v0.8.2, 21 April 2017
 
 - Relax [Rack](https://github.com/rack/rack) dependency to allow all versions where `Rack::Utils.secure_compare` is available (@metade)
