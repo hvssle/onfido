@@ -4,19 +4,40 @@ module Onfido
       @api_key = options[:api_key]
     end
 
-    def method_missing(method, *args)
-      klass = method.to_s.split('_').collect(&:capitalize).join
-      Object.const_get("Onfido::#{klass}").new(@api_key)
-    rescue NameError
-      super
+    def applicant
+      Onfido::Applicant.new(@api_key)
     end
 
-    def respond_to_missing?(method, include_private = false)
-      klass = method.to_s.capitalize
-      Object.const_get("Onfido::#{klass}")
-      true
-    rescue NameError
-      super
+    def check
+      Onfido::Check.new(@api_key)
+    end
+
+    def document
+      Onfido::Document.new(@api_key)
+    end
+
+    def live_photo
+      Onfido::LivePhoto.new(@api_key)
+    end
+
+    def report
+      Onfido::Report.new(@api_key)
+    end
+
+    def report_type_group
+      Onfido::ReportTypeGroup.new(@api_key)
+    end
+
+    def sdk_token
+      Onfido::SdkToken.new(@api_key)
+    end
+
+    def webhook
+      Onfido::Webhook.new(@api_key)
+    end
+
+    def address
+      Onfido::Address.new(@api_key)
     end
   end
 end
