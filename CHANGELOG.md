@@ -1,6 +1,11 @@
+## v0.8.4, 29 January 2018
+
+- Replace use of `method_missing` with explicitly-defined accessors when accessing
+resources from an `Onfido::API` instance (@hmac)
+
 ## v0.8.3, 16 January 2018
 
-Add support for `Onfido::SdkToken` resource
+- Add support for `Onfido::SdkToken` resource (@robotmay)
 
 ## v0.8.2, 21 April 2017
 
