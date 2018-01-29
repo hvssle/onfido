@@ -22,7 +22,7 @@ Style/Documentation:
 Style/SignalException:
   EnforcedStyle: only_raise
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     - Gemfile
 
