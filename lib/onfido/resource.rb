@@ -144,5 +144,12 @@ module Onfido
 
       raise ConnectionError.new(full_message)
     end
+
+    def validate_file!(file)
+      return if file.respond_to?(:read) && file.respond_to?(:path)
+
+      raise ArgumentError, "File must be a `File`-like object which responds to " \
+                           "`#read` and `#path`"
+    end
   end
 end

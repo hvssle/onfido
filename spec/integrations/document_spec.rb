@@ -4,13 +4,6 @@ describe Onfido::Document do
   subject(:document) { described_class.new }
 
   describe '#create' do
-    after do
-      file.close
-      file.unlink
-    end
-
-    let(:file) { Tempfile.new(['passport', '.jpg']) }
-    before { allow(document).to receive(:open).and_return(:file) }
     let(:params) do
       {
         type: 'passport',
@@ -20,9 +13,27 @@ describe Onfido::Document do
     end
     let(:applicant_id) { '1030303-123123-123123' }
 
-    it 'creates a new document' do
-      response = document.create('foobar', params)
-      expect(response['id']).not_to be_nil
+    context 'with a File-like object to upload' do
+      let(:file) { Tempfile.new(['passport', '.jpg']) }
+
+      after do
+        file.close
+        file.unlink
+      end
+
+      it 'creates a new document' do
+        response = document.create('foobar', params)
+        expect(response['id']).not_to be_nil
+      end
+    end
+
+    context 'passing in a non-File-like file to upload' do
+      let(:file) { 'https://onfido.com/images/logo.png' }
+
+      it 'raises an ArgumentError' do
+        expect { document.create('foobar', params) }.
+          to raise_error(ArgumentError, /must be a `File`-like object/)
+      end
     end
   end
 

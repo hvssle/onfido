@@ -72,7 +72,9 @@ api.document.download('applicant_id', 'document_id') # => Downloads a document a
 api.document.all('applicant_id') # => Returns all applicant's documents
 ```
 
-**Note:** The file parameter can be either a `File` object or a link to an image.
+**Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.
+Previous versions of this gem supported providing a URL to a file accessible over PHP. You
+should fetch the file yourself and then pass it in to `#create`.
 
 #### Live Photos
 
@@ -83,7 +85,9 @@ They can only be created - the Onfido does not support finding or listing them.
 api.live_photo.create('applicant_id', file: 'http://example.com')
 ```
 
-**Note:** The file parameter can be either a `File` object or a link to an image.
+**Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.
+Previous versions of this gem supported providing a URL to a file accessible over PHP. You
+should fetch the file yourself and then pass it in to `#create`.
 
 #### Checks
 
