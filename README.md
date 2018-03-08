@@ -12,8 +12,10 @@ This gem supports both `v1` and `v2` of the Onfido API. Refer to Onfido's [API d
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onfido', '~> 0.8.4'
+gem 'onfido', '~> 0.9.0'
 ```
+
+The gem is compatible with Ruby 2.2.0 and onwards. Earlier versions of Ruby have [reached end-of-life](https://www.ruby-lang.org/en/news/2017/04/01/support-of-ruby-2-1-has-ended/), are no longer supported and no longer receive security fixes.
 
 ## Configuration
 
@@ -73,8 +75,9 @@ api.document.all('applicant_id') # => Returns all applicant's documents
 ```
 
 **Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.
-Previous versions of this gem supported providing a URL to a file accessible over PHP. You
-should fetch the file yourself and then pass it in to `#create`.
+Previous versions of this gem supported providing a URL to a file accessible over HTTP or a path
+to a file in the local filesystem. You should instead load the file yourself and then pass it in
+to `#create`.
 
 #### Live Photos
 
@@ -86,8 +89,9 @@ api.live_photo.create('applicant_id', file: 'http://example.com')
 ```
 
 **Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.
-Previous versions of this gem supported providing a URL to a file accessible over PHP. You
-should fetch the file yourself and then pass it in to `#create`.
+Previous versions of this gem supported providing a URL to a file accessible over HTTP or a path
+to a file in the local filesystem. You should instead load the file yourself and then pass it in
+to `#create`.
 
 #### Checks
 
