@@ -1,3 +1,8 @@
+## v0.9.0, 8 March 2018
+
+- Remove the ability to create Documents and Live Photos from a remote URL or local path, mitigating a potential security vulnerability (see #45 for details) (@timrogers)
+- Drop support for Ruby versions earlier than 2.2.0, since they have [reached end-of-life](https://www.ruby-lang.org/en/news/2017/04/01/support-of-ruby-2-1-has-ended/) (@timrogers)
+
 ## v0.8.4, 29 January 2018
 
 - Replace use of `method_missing` with explicitly-defined accessors when accessing
