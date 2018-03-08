@@ -9,6 +9,7 @@ AllCops:
     - vendor/**/*
     - .*/**
     - spec/fixtures/**/*
+  TargetRubyVersion: 2.2.0
 
 Style/StringLiterals:
   Enabled: false
