@@ -73,8 +73,9 @@ api.document.all('applicant_id') # => Returns all applicant's documents
 ```
 
 **Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.
-Previous versions of this gem supported providing a URL to a file accessible over PHP. You
-should fetch the file yourself and then pass it in to `#create`.
+Previous versions of this gem supported providing a URL to a file accessible over HTTP or a path
+to a file in the local filesystem. You should instead load the file yourself and then pass it in
+to `#create`.
 
 #### Live Photos
 
@@ -86,8 +87,9 @@ api.live_photo.create('applicant_id', file: 'http://example.com')
 ```
 
 **Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.
-Previous versions of this gem supported providing a URL to a file accessible over PHP. You
-should fetch the file yourself and then pass it in to `#create`.
+Previous versions of this gem supported providing a URL to a file accessible over HTTP or a path
+to a file in the local filesystem. You should instead load the file yourself and then pass it in
+to `#create`.
 
 #### Checks
 
