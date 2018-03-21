@@ -30,8 +30,26 @@ module Onfido
       RestClient.log ||= NullLogger.new
     end
 
+    def region
+      first_bit = api_key.split("_")[0]
+
+      case first_bit
+      when "live", "test" # it's an old, regionless api-token
+        nil
+      else # it's a new token the first bit being the region
+        first_bit
+      end
+
+    rescue
+      nil
+    end
+
     def endpoint
-      "https://api.onfido.com/#{api_version}/"
+      if region
+        "https://api.#{region}.onfido.com/#{api_version}/"
+      else
+        "https://api.onfido.com/#{api_version}/"
+      end
     end
   end
 end
