@@ -31,17 +31,13 @@ module Onfido
     end
 
     def region
+      return unless api_key
+
       first_bit = api_key.split("_")[0]
 
-      case first_bit
-      when "live", "test" # it's an old, regionless api-token
-        nil
-      else # it's a new token the first bit being the region
-        first_bit
-      end
+      return if %w(live test).include?(first_bit)
 
-    rescue
-      nil
+      first_bit
     end
 
     def endpoint
