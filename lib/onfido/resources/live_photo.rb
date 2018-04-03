@@ -11,5 +11,20 @@ module Onfido
         payload: payload
       )
     end
+
+    def find(applicant_id, live_photo_id)
+      query_string = "applicant_id=#{applicant_id}"
+      get(url: url_for("live_photos/#{live_photo_id}?#{query_string}"))
+    end
+
+    def download(applicant_id, live_photo_id)
+      query_string = "applicant_id=#{applicant_id}"
+      get(url: url_for("live_photos/#{live_photo_id}/download?#{query_string}"))
+    end
+
+    def all(applicant_id)
+      query_string = "applicant_id=#{applicant_id}"
+      get(url: url_for("live_photos?#{query_string}"))
+    end
   end
 end

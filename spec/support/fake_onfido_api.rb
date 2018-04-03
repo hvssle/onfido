@@ -48,6 +48,32 @@ class FakeOnfidoAPI < Sinatra::Base
     json_response(201, 'live_photo.json')
   end
 
+  get '/v2/live_photos/:id' do
+    if params["applicant_id"] != "1030303-123123-123123"
+      status 404
+    else
+      json_response(200, 'live_photo.json')
+    end
+  end
+
+  get '/v2/live_photos' do
+    if params["applicant_id"] != "1030303-123123-123123"
+      status 404
+    else
+      json_response(200, 'live_photos.json')
+    end
+  end
+
+  get '/v2/live_photos/:id/download' do
+    if params["applicant_id"] != "1030303-123123-123123"
+      status 404
+    else
+      status 200
+      content_type 'image/jpeg'
+      "\x01\x02\x03" # acts as binary file data
+    end
+  end
+
   post '/v2/applicants/:id/checks' do
     json_response(201, 'check.json')
   end
