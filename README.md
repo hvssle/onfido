@@ -12,7 +12,7 @@ This gem supports both `v1` and `v2` of the Onfido API. Refer to Onfido's [API d
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onfido', '~> 0.9.0'
+gem 'onfido', '~> 0.10.0'
 ```
 
 The gem is compatible with Ruby 2.2.0 and onwards. Earlier versions of Ruby have [reached end-of-life](https://www.ruby-lang.org/en/news/2017/04/01/support-of-ruby-2-1-has-ended/), are no longer supported and no longer receive security fixes.
@@ -82,10 +82,12 @@ to `#create`.
 #### Live Photos
 
 Live Photos, like documents, can provide supporting evidence for Onfido checks.
-They can only be created - the Onfido does not support finding or listing them.
 
 ```ruby
 api.live_photo.create('applicant_id', file: 'http://example.com')
+api.live_photo.find(applicant_id, live_photo_id) # => Finds a live photo
+api.live_photo.download(applicant_id, live_photo_id) # => Downloads a live photo as binary data
+api.live_photo.all(applicant_id) # => Returns all applicant's live photos
 ```
 
 **Note:** The file parameter must be a `File`-like object which responds to `#read` and `#path`.

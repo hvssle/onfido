@@ -1,3 +1,7 @@
+## v0.10.0, 3 April 2018
+
+- Add support for download, find and retrieve all for live_photo resource (@kirsis)
+
 ## v0.9.0, 8 March 2018
 
 - Remove the ability to create Documents and Live Photos from a remote URL or local path, mitigating a potential security vulnerability (see #45 for details) (@timrogers)
