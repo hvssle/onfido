@@ -1,3 +1,8 @@
+## v0.11.0, 18 April 2018
+
+- Automatically detect the correct Onfido API region to use based on the provided API
+key (#49) (@tpinto)
+
 ## v0.10.0, 3 April 2018
 
 - Add support for download, find and retrieve all for live_photo resource (@kirsis)
