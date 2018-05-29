@@ -1,3 +1,7 @@
+## v0.12.0, 29 May 2018
+
+- Add support for the Live Video resource (#55) (@Intrepidd)
+
 ## v0.11.0, 18 April 2018
 
 - Automatically detect the correct Onfido API region to use based on the provided API
