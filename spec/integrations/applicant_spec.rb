@@ -86,7 +86,7 @@ describe Onfido::Applicant do
     context 'with the default page and per page params' do
       it 'returns all the applicants' do
         response = applicant.all
-        expect(response['applicants'].size).to eq(2)
+        expect(response['applicants'].size).to eq(3)
       end
     end
 

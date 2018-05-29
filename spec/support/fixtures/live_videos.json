@@ -1,0 +1,27 @@
+{
+  "live_videos": [
+    {
+      "challenge": [
+        {
+          "query": "turnLeft",
+          "type": "movement"
+        },
+        {
+          "query": [
+            9,
+            5,
+            9
+          ],
+          "type": "recite"
+        }
+      ],
+      "created_at": "2018-05-29T09:00:39Z",
+      "download_href": "/v2/live_videos/c9701e9b-83aa-442f-995b-20320ee8fb01/download",
+      "file_name": "output-29-05-2018_11_00_24.mov",
+      "file_size": 3348421,
+      "file_type": "video/quicktime",
+      "href": "/v2/live_videos/c9701e9b-83aa-442f-995b-20320ee8fb01",
+      "id": "c9701e9b-83aa-442f-995b-20320ee8fb01"
+    }
+  ]
+}
