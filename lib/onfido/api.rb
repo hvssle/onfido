@@ -20,6 +20,10 @@ module Onfido
       Onfido::LivePhoto.new(@api_key)
     end
 
+    def live_video
+      Onfido::LiveVideo.new(@api_key)
+    end
+
     def report
       Onfido::Report.new(@api_key)
     end
