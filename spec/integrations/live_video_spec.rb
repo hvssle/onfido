@@ -4,7 +4,7 @@ describe Onfido::LiveVideo do
   subject(:live_video) { described_class.new }
 
   describe '#find' do
-    let(:applicant_id) { '1030303-123123-123146' }
+    let(:applicant_id) { '1030303-123123-123123' }
     let(:live_video_id) { 'c9701e9b-83aa-442f-995b-20320ee8fb01' }
 
     it 'returns the expected live photo' do
@@ -14,7 +14,7 @@ describe Onfido::LiveVideo do
   end
 
   describe '#all' do
-    let(:applicant_id) { '1030303-123123-123146' }
+    let(:applicant_id) { '1030303-123123-123123' }
 
     it 'returns list of documents' do
       response = live_video.all(applicant_id)
@@ -23,7 +23,7 @@ describe Onfido::LiveVideo do
   end
 
   describe '#download' do
-    let(:applicant_id) { '1030303-123123-123146' }
+    let(:applicant_id) { '1030303-123123-123123' }
     let(:live_video_id) { 'c9701e9b-83aa-442f-995b-20320ee8fb01' }
 
     it 'returns the file data' do

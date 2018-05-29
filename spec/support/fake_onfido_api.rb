@@ -75,7 +75,7 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v2/live_videos/:id' do
-    if params["applicant_id"] != "1030303-123123-123146"
+    if params["applicant_id"] != "1030303-123123-123123"
       status 404
     else
       json_response(200, 'live_video.json')
@@ -83,7 +83,7 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v2/live_videos' do
-    if params["applicant_id"] != "1030303-123123-123146"
+    if params["applicant_id"] != "1030303-123123-123123"
       status 404
     else
       json_response(200, 'live_videos.json')
@@ -91,7 +91,7 @@ class FakeOnfidoAPI < Sinatra::Base
   end
 
   get '/v2/live_videos/:id/download' do
-    if params["applicant_id"] != "1030303-123123-123146"
+    if params["applicant_id"] != "1030303-123123-123123"
       status 404
     else
       status 200
