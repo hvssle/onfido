@@ -2,9 +2,6 @@
 
 AllCops:
   DisplayCopNames: true
-  Include:
-    - Rakefile
-    - lib/tasks/*.rake
   Exclude:
     - vendor/**/*
     - .*/**
