@@ -1,6 +1,6 @@
 # coding: utf-8
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'onfido/version'
 
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.1'
   spec.add_development_dependency 'rspec-its', '~> 1.2'
-  spec.add_development_dependency 'rubocop', '~> 0.52.0'
+  spec.add_development_dependency 'rubocop', '~> 0.57.0'
   spec.add_development_dependency 'sinatra', '~> 1.4'
   spec.add_development_dependency 'webmock', '~> 3.0'
 
