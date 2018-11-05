@@ -35,17 +35,18 @@ describe Onfido do
       end
     end
 
-    describe 'using a US API token' do
+    describe 'using the US region' do
       it 'should change endpoint' do
-        onfido.api_key = "us_live_asdfghjkl1234567890qwertyuiop"
+        onfido.region = 'us'
         expect(onfido.endpoint).to eq('https://api.us.onfido.com/v2/')
       end
     end
 
-    describe 'using a EU API token' do
+    describe 'using an unsupported region' do
       it 'should change endpoint' do
-        onfido.api_key = "eu_live_asdfghjkl1234567890qwertyuiop"
-        expect(onfido.endpoint).to eq('https://api.eu.onfido.com/v2/')
+        onfido.region = 'de'
+        expect { onfido.endpoint }.
+          to raise_error('The region "de" is not currently supported')
       end
     end
 
