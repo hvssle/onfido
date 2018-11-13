@@ -12,14 +12,14 @@ This gem supports both `v1` and `v2` of the Onfido API. Refer to Onfido's [API d
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onfido', '~> 0.12.0'
+gem 'onfido', '~> 0.13.0'
 ```
 
 The gem is compatible with Ruby 2.2.0 and onwards. Earlier versions of Ruby have [reached end-of-life](https://www.ruby-lang.org/en/news/2017/04/01/support-of-ruby-2-1-has-ended/), are no longer supported and no longer receive security fixes.
 
 ## Configuration
 
-There are 5 configuration options:
+There are 6 configuration options:
 
 ```ruby
 Onfido.configure do |config|
@@ -28,6 +28,7 @@ Onfido.configure do |config|
   config.logger = Logger.new(STDOUT)
   config.open_timeout = 30
   config.read_timeout = 80
+  config.region = nil # See https://documentation.onfido.com/#regions for supported regions
 end
 ```
 
