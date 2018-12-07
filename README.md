@@ -28,9 +28,18 @@ Onfido.configure do |config|
   config.logger = Logger.new(STDOUT)
   config.open_timeout = 30
   config.read_timeout = 80
-  config.region = nil # See https://documentation.onfido.com/#regions for supported regions
+  config.region = nil 
 end
 ```
+
+### Regions
+
+The gem will use the default region if no region is specified.
+
+To specify the US region do:
+`config.region = :us`
+
+See https://documentation.onfido.com/#regions for supported regions.
 
 ## Usage
 
