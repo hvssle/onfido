@@ -114,7 +114,9 @@ describe Onfido::Applicant do
         expect { applicant.restore(applicant_id) }.to raise_error { |error|
           expect(error).to be_a(Onfido::RequestError)
           expect(error.message).to eq('There was a validation error on this request')
-          expect(error.fields).to eq("Applicant #{applicant_id} is not scheduled for deletion")
+          expect(error.fields).to eq(
+            "Applicant #{applicant_id} is not scheduled for deletion"
+          )
         }
       end
     end
