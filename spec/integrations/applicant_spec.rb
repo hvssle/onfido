@@ -97,4 +97,28 @@ describe Onfido::Applicant do
       end
     end
   end
+
+  describe '#restore' do
+    context 'an applicant scheduled for deletion' do
+      let(:applicant_id) { '61f659cb-c90b-4067-808a-6136b5c01351' }
+
+      it 'returns nil' do
+        expect(applicant.restore(applicant_id)).to be_nil
+      end
+    end
+
+    context 'an applicant not scheduled for deletion' do
+      let(:applicant_id) { 'a2fb9c62-ab10-4898-a8ec-342c4b552ad5' }
+
+      it 'returns an error' do
+        expect { applicant.restore(applicant_id) }.to raise_error { |error|
+          expect(error).to be_a(Onfido::RequestError)
+          expect(error.message).to eq('There was a validation error on this request')
+          expect(error.fields).to eq(
+            "Applicant a2fb9c62-ab10-4898-a8ec-342c4b552ad5 is not scheduled for deletion"
+          )
+        }
+      end
+    end
+  end
 end

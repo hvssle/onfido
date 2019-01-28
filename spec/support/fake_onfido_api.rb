@@ -26,6 +26,14 @@ class FakeOnfidoAPI < Sinatra::Base
     status 204
   end
 
+  post '/v2/applicants/:id/restore' do
+    if params["id"] == "a2fb9c62-ab10-4898-a8ec-342c4b552ad5"
+      json_response(422, 'not_scheduled_for_deletion_error.json')
+    else
+      status 204
+    end
+  end
+
   post '/v2/applicants/:id/documents' do
     json_response(201, 'document.json')
   end
