@@ -1,3 +1,11 @@
+## v0.14.0, 28 Jan 2019
+
+- Add support for applicant deletion and restore endpoints
+
+## v0.13.0, 5 Nov 2018
+
+- Add support for region-specific environments (@stephencookdev)
+
 ## v0.12.0, 29 May 2018
 
 - Add support for the Live Video resource (#55) (@Intrepidd)

@@ -68,10 +68,14 @@ Applicants are the object upon which Onfido checks are performed.
 ```ruby
 api.applicant.create(params)                  # => Creates an applicant
 api.applicant.update('applicant_id', params)  # => Updates an applicant
-api.applicant.destroy('applicant_id')         # => Destroy an applicant
+api.applicant.destroy('applicant_id')         # => Schedule an applicant for deletion
+api.applicant.restore('applicant_id')         # => Restore an applicant scheduled for deletion
 api.applicant.find('applicant_id')            # => Finds a single applicant
 api.applicant.all                             # => Returns all applicants
 ```
+
+**Note:** Calling api.applicant.destroy adds the applicant and all associated documents, photos, videos, checks, and reports to the deletion queue. They will be deleted 20 days after the request is made. An applicant that is scheduled for deletion can be restored but applicants that have been permanently deleted cannot.
+See https://documentation.onfido.com/#delete-applicant for more information.
 
 #### Documents
 

@@ -1,0 +1,7 @@
+{
+    "error": {
+        "type": "validation_error",
+        "message": "There was a validation error on this request",
+        "fields": "Applicant a2fb9c62-ab10-4898-a8ec-342c4b552ad5 is not scheduled for deletion"
+    }
+}
