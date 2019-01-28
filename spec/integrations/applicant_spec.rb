@@ -115,7 +115,7 @@ describe Onfido::Applicant do
           expect(error).to be_a(Onfido::RequestError)
           expect(error.message).to eq('There was a validation error on this request')
           expect(error.fields).to eq(
-            "Applicant #{applicant_id} is not scheduled for deletion"
+            "Applicant a2fb9c62-ab10-4898-a8ec-342c4b552ad5 is not scheduled for deletion"
           )
         }
       end

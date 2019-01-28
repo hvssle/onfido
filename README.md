@@ -28,7 +28,7 @@ Onfido.configure do |config|
   config.logger = Logger.new(STDOUT)
   config.open_timeout = 30
   config.read_timeout = 80
-  config.region = nil 
+  config.region = nil
 end
 ```
 
@@ -74,7 +74,7 @@ api.applicant.find('applicant_id')            # => Finds a single applicant
 api.applicant.all                             # => Returns all applicants
 ```
 
-**Note:** Calling api.applicant.destroy adds the applicant and all associated documents, photos, videos, checks, and reports to the deletion queue. They will be deleted 20 days after the request is made. An applicant that is scheduled for deletion can be restored but applicants that have been permanently deleted cannot.
+**Note:** Calling `api.applicant.destroy` adds the applicant and all associated documents, photos, videos, checks, and reports to the deletion queue. They will be deleted 20 days after the request is made. An applicant that is scheduled for deletion can be restored but applicants that have been permanently deleted cannot.
 See https://documentation.onfido.com/#delete-applicant for more information.
 
 #### Documents
