@@ -117,7 +117,7 @@ more "reports" on them.
 ```ruby
 api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
 api.check.find('applicant_id', 'check_id')
-api.check.find_by_url(params[:payload][:object][:href])
+api.check.find_by_url('applicants/a90e7a17-677a-49ab-a171-281f96c77bde/checks/c9f41bef-0610-4d2f-9982-ae9387876edc')
 api.check.resume('check_id')
 api.check.all('applicant_id')
 ```
