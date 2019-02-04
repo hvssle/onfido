@@ -12,7 +12,7 @@ This gem supports both `v1` and `v2` of the Onfido API. Refer to Onfido's [API d
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onfido', '~> 0.14.0'
+gem 'onfido', '~> 0.15.0'
 ```
 
 The gem is compatible with Ruby 2.2.0 and onwards. Earlier versions of Ruby have [reached end-of-life](https://www.ruby-lang.org/en/news/2017/04/01/support-of-ruby-2-1-has-ended/), are no longer supported and no longer receive security fixes.
@@ -117,6 +117,7 @@ more "reports" on them.
 ```ruby
 api.check.create('applicant_id', type: 'express', reports: [{ name: 'identity' }])
 api.check.find('applicant_id', 'check_id')
+api.check.find_by_url(params[:payload][:object][:href])
 api.check.resume('check_id')
 api.check.all('applicant_id')
 ```
