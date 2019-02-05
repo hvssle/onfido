@@ -1,3 +1,7 @@
+## v0.15.0, 4 Feb 2019
+
+- Add Check#find_by_url method (@ctrlaltdylan)
+
 ## v0.14.0, 28 Jan 2019
 
 - Add support for applicant deletion and restore endpoints

@@ -35,7 +35,7 @@ describe Onfido::Check do
 
     context 'partial url' do
       let(:url) { "applicants/#{applicant_id}/checks/#{check_id}" }
-      
+
       it 'returns an existing check for the applicant with the partial url' do
         response = check.find_by_url(url)
         expect(response['id']).to eq(check_id)
@@ -53,7 +53,9 @@ describe Onfido::Check do
     end
 
     context 'full url' do
-      let(:url) { "https://api.onfido.com/v2/applicants/#{applicant_id}/checks/#{check_id}" }
+      let(:url) do
+        "https://api.onfido.com/v2/applicants/#{applicant_id}/checks/#{check_id}"
+      end
 
       it 'returns an existing check for the applicant with the partial url' do
         response = check.find_by_url(url)
