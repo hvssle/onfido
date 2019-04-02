@@ -18,7 +18,7 @@ module Onfido
     # As well as being a normal resource, Onfido::Webhook also supports
     # verifying the authenticity of a webhook by comparing the signature on the
     # request to one computed from the body
-    def self.valid?(request_body, request_signature, token)
+    def self.valid?(request_body, request_signature, token = Onfido.webhook_token)
       if [request_body, request_signature, token].any?(&:nil?)
         raise ArgumentError, "A request body, request signature and token " \
                              "must be provided"
