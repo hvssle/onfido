@@ -4,7 +4,8 @@ module Onfido
       us: "api.us.onfido.com"
     }.freeze
 
-    attr_accessor :api_key, :region, :open_timeout, :read_timeout, :api_version
+    attr_accessor :api_key, :region, :open_timeout, :read_timeout, :api_version,
+                  :webhook_token
 
     def self.extended(base)
       base.reset
@@ -16,6 +17,7 @@ module Onfido
 
     def reset
       self.api_key = nil
+      self.webhook_token = nil
       self.region = nil
       self.open_timeout = 30
       self.read_timeout = 80
