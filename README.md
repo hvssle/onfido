@@ -208,7 +208,7 @@ This provided signature [should](https://onfido.com/documentation#webhook-securi
 
 ```ruby
 if Onfido::Webhook.valid?(request.raw_post,
-                          request.headers["X-Signature"],
+                          request.headers["X-SHA2-Signature"],
                           ENV['ONFIDO_WEBHOOK_TOKEN'])
   process_webhook
 else

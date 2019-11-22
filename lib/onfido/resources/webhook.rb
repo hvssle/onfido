@@ -29,7 +29,7 @@ module Onfido
     end
 
     def self.generate_signature(request_body, token)
-      OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), token, request_body)
+      OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), token, request_body)
     end
     private_class_method :generate_signature
   end

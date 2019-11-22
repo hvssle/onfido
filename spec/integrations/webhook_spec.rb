@@ -53,13 +53,17 @@ describe Onfido::Webhook do
     end
 
     let(:request_body) { '{"foo":"bar"}' }
-    let(:request_signature) { 'fdab9db604d33297741b43b9fc9536028d09dca3' }
+    let(:request_signature) do
+      '89e60408fec20bfb26bb0f993d5e88307818982f50f23b361a00d679bae8b1dc'
+    end
     let(:token) { 'very_secret_token' }
 
     it { is_expected.to be(true) }
 
     context "with an invalid signature" do
-      let(:request_signature) { '2f3d7727ff9a32a7c87072ce514df1f6d3228bec' }
+      let(:request_signature) do
+        'e1ad1c23078824debd18b2dee222506167cf28921a2a42f9c05e2426e51ad986'
+      end
       it { is_expected.to be(false) }
     end
 
